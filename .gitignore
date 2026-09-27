@@ -1,0 +1,21 @@
+# Ignore large binary executables and archives
+*.exe
+cloudflared.exe
+*.zip
+*.tar.gz
+
+# Python bytecode
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Local environment
+.env
+venv/
+env/
+.venv/
+.vercel
+data/*.db
+*.png
+

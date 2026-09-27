@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>JS Error Detector</title>
+  <script>
+    window.errors = [];
+    window.onerror = function(msg, url, line, col, error) {
+      const errStr = 'JS ERROR: ' + msg + ' at line ' + line + ':' + col;
+      window.errors.push(errStr);
+      const h1 = document.createElement('h1');
+      h1.style.color = 'red';
+      h1.textContent = errStr;
+      document.body.appendChild(h1);
+    };
+  </script>
+</head>
+<body style="background: white; padding: 20px;">
+  <!-- Mock elements for elements object -->
+  <select id="select-intelligence-feed"></select>
+  <select id="select-lookback-window"></select>
+  <select id="select-case"></select>
+  <div id="dash-sparkwave-svg"></div>
+  <path id="dash-sparkwave-path-area"></path>
+  <path id="dash-sparkwave-path-line"></path>
+  <line id="dash-sparkwave-marker-line"></line>
+  <circle id="dash-sparkwave-marker-dot"></circle>
+  <circle id="dash-sparkwave-pulse-ring"></circle>
+
+  <script src="/static/app.js?v=test"></script>
+  <script>
+    setTimeout(() => {
+      if (window.errors.length === 0) {
+        const ok = document.createElement('h1');
+        ok.style.color = 'green';
+        ok.textContent = 'NO JAVASCRIPT ERRORS DETECTED!';
+        document.body.appendChild(ok);
+      }
+    }, 500);
+  </script>
+</body>
+</html>

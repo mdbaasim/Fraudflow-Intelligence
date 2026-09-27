@@ -1,0 +1,796 @@
+[
+  {
+    "city": "Dindigul",
+    "state": "Tamil Nadu",
+    "lat": 10.3673,
+    "lng": 77.9803,
+    "transit_hubs": [
+      "Madurai",
+      "Tiruchirappalli",
+      "Salem",
+      "Chennai"
+    ]
+  },
+  {
+    "city": "Madurai",
+    "state": "Tamil Nadu",
+    "lat": 9.9252,
+    "lng": 78.1198,
+    "transit_hubs": [
+      "Dindigul",
+      "Tiruchirappalli",
+      "Coimbatore",
+      "Chennai"
+    ]
+  },
+  {
+    "city": "Tiruchirappalli",
+    "state": "Tamil Nadu",
+    "lat": 10.7905,
+    "lng": 78.7047,
+    "transit_hubs": [
+      "Thanjavur",
+      "Salem",
+      "Madurai",
+      "Chennai"
+    ]
+  },
+  {
+    "city": "Trichy",
+    "state": "Tamil Nadu",
+    "lat": 10.7905,
+    "lng": 78.7047,
+    "transit_hubs": [
+      "Thanjavur",
+      "Salem",
+      "Madurai",
+      "Chennai"
+    ]
+  },
+  {
+    "city": "Coimbatore",
+    "state": "Tamil Nadu",
+    "lat": 11.0168,
+    "lng": 76.9558,
+    "transit_hubs": [
+      "Tiruppur",
+      "Erode",
+      "Salem",
+      "Chennai"
+    ]
+  },
+  {
+    "city": "Salem",
+    "state": "Tamil Nadu",
+    "lat": 11.6643,
+    "lng": 78.146,
+    "transit_hubs": [
+      "Erode",
+      "Vellore",
+      "Bengaluru",
+      "Chennai"
+    ]
+  },
+  {
+    "city": "Chennai",
+    "state": "Tamil Nadu",
+    "lat": 13.0827,
+    "lng": 80.2707,
+    "transit_hubs": [
+      "Kanchipuram",
+      "Vellore",
+      "Bengaluru",
+      "Hyderabad"
+    ]
+  },
+  {
+    "city": "Tiruppur",
+    "state": "Tamil Nadu",
+    "lat": 11.1085,
+    "lng": 77.3411,
+    "transit_hubs": [
+      "Coimbatore",
+      "Erode",
+      "Salem",
+      "Chennai"
+    ]
+  },
+  {
+    "city": "Erode",
+    "state": "Tamil Nadu",
+    "lat": 11.341,
+    "lng": 77.7172,
+    "transit_hubs": [
+      "Tiruppur",
+      "Salem",
+      "Coimbatore",
+      "Chennai"
+    ]
+  },
+  {
+    "city": "Vellore",
+    "state": "Tamil Nadu",
+    "lat": 12.9165,
+    "lng": 79.1325,
+    "transit_hubs": [
+      "Ranipet",
+      "Kanchipuram",
+      "Chennai",
+      "Bengaluru"
+    ]
+  },
+  {
+    "city": "Tirunelveli",
+    "state": "Tamil Nadu",
+    "lat": 8.7139,
+    "lng": 77.7567,
+    "transit_hubs": [
+      "Thoothukudi",
+      "Madurai",
+      "Tiruchirappalli",
+      "Chennai"
+    ]
+  },
+  {
+    "city": "Thoothukudi",
+    "state": "Tamil Nadu",
+    "lat": 8.7642,
+    "lng": 78.1348,
+    "transit_hubs": [
+      "Tirunelveli",
+      "Madurai",
+      "Tiruchirappalli",
+      "Chennai"
+    ]
+  },
+  {
+    "city": "Nagercoil",
+    "state": "Tamil Nadu",
+    "lat": 8.1833,
+    "lng": 77.4119,
+    "transit_hubs": [
+      "Tirunelveli",
+      "Madurai",
+      "Tiruchirappalli",
+      "Chennai"
+    ]
+  },
+  {
+    "city": "Thanjavur",
+    "state": "Tamil Nadu",
+    "lat": 10.787,
+    "lng": 79.1378,
+    "transit_hubs": [
+      "Tiruchirappalli",
+      "Kumbakonam",
+      "Salem",
+      "Chennai"
+    ]
+  },
+  {
+    "city": "Hosur",
+    "state": "Tamil Nadu",
+    "lat": 12.7409,
+    "lng": 77.8253,
+    "transit_hubs": [
+      "Bengaluru",
+      "Salem",
+      "Chennai"
+    ]
+  },
+  {
+    "city": "Kanchipuram",
+    "state": "Tamil Nadu",
+    "lat": 12.8342,
+    "lng": 79.7036,
+    "transit_hubs": [
+      "Vellore",
+      "Tambaram",
+      "Chennai"
+    ]
+  },
+  {
+    "city": "Karur",
+    "state": "Tamil Nadu",
+    "lat": 10.9601,
+    "lng": 78.0766,
+    "transit_hubs": [
+      "Dindigul",
+      "Tiruchirappalli",
+      "Salem",
+      "Chennai"
+    ]
+  },
+  {
+    "city": "Kumbakonam",
+    "state": "Tamil Nadu",
+    "lat": 10.9602,
+    "lng": 79.3845,
+    "transit_hubs": [
+      "Thanjavur",
+      "Tiruchirappalli",
+      "Chennai"
+    ]
+  },
+  {
+    "city": "Cuddalore",
+    "state": "Tamil Nadu",
+    "lat": 11.748,
+    "lng": 79.7714,
+    "transit_hubs": [
+      "Puducherry",
+      "Villupuram",
+      "Chennai"
+    ]
+  },
+  {
+    "city": "Puducherry",
+    "state": "Puducherry",
+    "lat": 11.9416,
+    "lng": 79.8083,
+    "transit_hubs": [
+      "Cuddalore",
+      "Villupuram",
+      "Chennai"
+    ]
+  },
+  {
+    "city": "Bengaluru",
+    "state": "Karnataka",
+    "lat": 12.9716,
+    "lng": 77.5946,
+    "transit_hubs": [
+      "Mysuru",
+      "Hosur",
+      "Chennai",
+      "Hyderabad"
+    ]
+  },
+  {
+    "city": "Bangalore",
+    "state": "Karnataka",
+    "lat": 12.9716,
+    "lng": 77.5946,
+    "transit_hubs": [
+      "Mysuru",
+      "Hosur",
+      "Chennai",
+      "Hyderabad"
+    ]
+  },
+  {
+    "city": "Mysuru",
+    "state": "Karnataka",
+    "lat": 12.2958,
+    "lng": 76.6394,
+    "transit_hubs": [
+      "Mandya",
+      "Bengaluru",
+      "Chennai"
+    ]
+  },
+  {
+    "city": "Mangaluru",
+    "state": "Karnataka",
+    "lat": 12.9141,
+    "lng": 74.856,
+    "transit_hubs": [
+      "Udupi",
+      "Hassan",
+      "Bengaluru"
+    ]
+  },
+  {
+    "city": "Hubballi",
+    "state": "Karnataka",
+    "lat": 15.3647,
+    "lng": 75.124,
+    "transit_hubs": [
+      "Dharwad",
+      "Belagavi",
+      "Bengaluru"
+    ]
+  },
+  {
+    "city": "Belagavi",
+    "state": "Karnataka",
+    "lat": 15.8497,
+    "lng": 74.4977,
+    "transit_hubs": [
+      "Hubballi",
+      "Pune",
+      "Bengaluru"
+    ]
+  },
+  {
+    "city": "Kochi",
+    "state": "Kerala",
+    "lat": 9.9312,
+    "lng": 76.2673,
+    "transit_hubs": [
+      "Thrissur",
+      "Palakkad",
+      "Coimbatore",
+      "Chennai"
+    ]
+  },
+  {
+    "city": "Cochin",
+    "state": "Kerala",
+    "lat": 9.9312,
+    "lng": 76.2673,
+    "transit_hubs": [
+      "Thrissur",
+      "Palakkad",
+      "Coimbatore",
+      "Chennai"
+    ]
+  },
+  {
+    "city": "Thiruvananthapuram",
+    "state": "Kerala",
+    "lat": 8.5241,
+    "lng": 76.9366,
+    "transit_hubs": [
+      "Kollam",
+      "Kochi",
+      "Bengaluru",
+      "Chennai"
+    ]
+  },
+  {
+    "city": "Trivandrum",
+    "state": "Kerala",
+    "lat": 8.5241,
+    "lng": 76.9366,
+    "transit_hubs": [
+      "Kollam",
+      "Kochi",
+      "Bengaluru",
+      "Chennai"
+    ]
+  },
+  {
+    "city": "Kozhikode",
+    "state": "Kerala",
+    "lat": 11.2588,
+    "lng": 75.7804,
+    "transit_hubs": [
+      "Palakkad",
+      "Coimbatore",
+      "Bengaluru"
+    ]
+  },
+  {
+    "city": "Thrissur",
+    "state": "Kerala",
+    "lat": 10.5276,
+    "lng": 76.2144,
+    "transit_hubs": [
+      "Palakkad",
+      "Coimbatore",
+      "Kochi"
+    ]
+  },
+  {
+    "city": "Hyderabad",
+    "state": "Telangana",
+    "lat": 17.385,
+    "lng": 78.4867,
+    "transit_hubs": [
+      "Secunderabad",
+      "Warangal",
+      "Vijayawada",
+      "Bengaluru"
+    ]
+  },
+  {
+    "city": "Secunderabad",
+    "state": "Telangana",
+    "lat": 17.4399,
+    "lng": 78.4983,
+    "transit_hubs": [
+      "Hyderabad",
+      "Nagpur",
+      "Bengaluru"
+    ]
+  },
+  {
+    "city": "Visakhapatnam",
+    "state": "Andhra Pradesh",
+    "lat": 17.6868,
+    "lng": 83.2185,
+    "transit_hubs": [
+      "Vijayawada",
+      "Bhubaneswar",
+      "Hyderabad"
+    ]
+  },
+  {
+    "city": "Vizag",
+    "state": "Andhra Pradesh",
+    "lat": 17.6868,
+    "lng": 83.2185,
+    "transit_hubs": [
+      "Vijayawada",
+      "Bhubaneswar",
+      "Hyderabad"
+    ]
+  },
+  {
+    "city": "Vijayawada",
+    "state": "Andhra Pradesh",
+    "lat": 16.5062,
+    "lng": 80.648,
+    "transit_hubs": [
+      "Guntur",
+      "Hyderabad",
+      "Chennai"
+    ]
+  },
+  {
+    "city": "Tirupati",
+    "state": "Andhra Pradesh",
+    "lat": 13.6288,
+    "lng": 79.4192,
+    "transit_hubs": [
+      "Vellore",
+      "Chennai",
+      "Bengaluru"
+    ]
+  },
+  {
+    "city": "Mumbai",
+    "state": "Maharashtra",
+    "lat": 19.076,
+    "lng": 72.8777,
+    "transit_hubs": [
+      "Thane",
+      "Navi Mumbai",
+      "Pune",
+      "Surat"
+    ]
+  },
+  {
+    "city": "Bombay",
+    "state": "Maharashtra",
+    "lat": 19.076,
+    "lng": 72.8777,
+    "transit_hubs": [
+      "Thane",
+      "Navi Mumbai",
+      "Pune",
+      "Surat"
+    ]
+  },
+  {
+    "city": "Pune",
+    "state": "Maharashtra",
+    "lat": 18.5204,
+    "lng": 73.8567,
+    "transit_hubs": [
+      "Pimpri",
+      "Thane",
+      "Mumbai",
+      "Bengaluru"
+    ]
+  },
+  {
+    "city": "Nagpur",
+    "state": "Maharashtra",
+    "lat": 21.1458,
+    "lng": 79.0882,
+    "transit_hubs": [
+      "Bhopal",
+      "Raipur",
+      "Hyderabad",
+      "Mumbai"
+    ]
+  },
+  {
+    "city": "Nashik",
+    "state": "Maharashtra",
+    "lat": 19.9975,
+    "lng": 73.7898,
+    "transit_hubs": [
+      "Thane",
+      "Mumbai",
+      "Pune"
+    ]
+  },
+  {
+    "city": "Thane",
+    "state": "Maharashtra",
+    "lat": 19.2183,
+    "lng": 72.9781,
+    "transit_hubs": [
+      "Mumbai",
+      "Navi Mumbai",
+      "Pune"
+    ]
+  },
+  {
+    "city": "Navi Mumbai",
+    "state": "Maharashtra",
+    "lat": 19.033,
+    "lng": 73.0297,
+    "transit_hubs": [
+      "Thane",
+      "Mumbai",
+      "Pune"
+    ]
+  },
+  {
+    "city": "Delhi",
+    "state": "Delhi",
+    "lat": 28.7041,
+    "lng": 77.1025,
+    "transit_hubs": [
+      "Noida",
+      "Gurugram",
+      "Ghaziabad",
+      "Jaipur"
+    ]
+  },
+  {
+    "city": "New Delhi",
+    "state": "Delhi",
+    "lat": 28.6139,
+    "lng": 77.209,
+    "transit_hubs": [
+      "Noida",
+      "Gurugram",
+      "Ghaziabad",
+      "Jaipur"
+    ]
+  },
+  {
+    "city": "Gurugram",
+    "state": "Haryana",
+    "lat": 28.4595,
+    "lng": 77.0266,
+    "transit_hubs": [
+      "Delhi",
+      "Faridabad",
+      "Jaipur"
+    ]
+  },
+  {
+    "city": "Gurgaon",
+    "state": "Haryana",
+    "lat": 28.4595,
+    "lng": 77.0266,
+    "transit_hubs": [
+      "Delhi",
+      "Faridabad",
+      "Jaipur"
+    ]
+  },
+  {
+    "city": "Noida",
+    "state": "Uttar Pradesh",
+    "lat": 28.5355,
+    "lng": 77.391,
+    "transit_hubs": [
+      "Delhi",
+      "Ghaziabad",
+      "Agra"
+    ]
+  },
+  {
+    "city": "Ghaziabad",
+    "state": "Uttar Pradesh",
+    "lat": 28.6692,
+    "lng": 77.4538,
+    "transit_hubs": [
+      "Delhi",
+      "Noida",
+      "Meerut"
+    ]
+  },
+  {
+    "city": "Lucknow",
+    "state": "Uttar Pradesh",
+    "lat": 26.8467,
+    "lng": 80.9462,
+    "transit_hubs": [
+      "Kanpur",
+      "Agra",
+      "Delhi",
+      "Varanasi"
+    ]
+  },
+  {
+    "city": "Kanpur",
+    "state": "Uttar Pradesh",
+    "lat": 26.4499,
+    "lng": 80.3319,
+    "transit_hubs": [
+      "Lucknow",
+      "Agra",
+      "Delhi"
+    ]
+  },
+  {
+    "city": "Varanasi",
+    "state": "Uttar Pradesh",
+    "lat": 25.3176,
+    "lng": 82.9739,
+    "transit_hubs": [
+      "Prayagraj",
+      "Patna",
+      "Lucknow"
+    ]
+  },
+  {
+    "city": "Agra",
+    "state": "Uttar Pradesh",
+    "lat": 27.1767,
+    "lng": 78.0081,
+    "transit_hubs": [
+      "Mathura",
+      "Noida",
+      "Delhi"
+    ]
+  },
+  {
+    "city": "Jaipur",
+    "state": "Rajasthan",
+    "lat": 26.9124,
+    "lng": 75.7873,
+    "transit_hubs": [
+      "Ajmer",
+      "Gurugram",
+      "Delhi",
+      "Ahmedabad"
+    ]
+  },
+  {
+    "city": "Chandigarh",
+    "state": "Chandigarh",
+    "lat": 30.7333,
+    "lng": 76.7794,
+    "transit_hubs": [
+      "Ambala",
+      "Ludhiana",
+      "Delhi"
+    ]
+  },
+  {
+    "city": "Bhopal",
+    "state": "Madhya Pradesh",
+    "lat": 23.2599,
+    "lng": 77.4126,
+    "transit_hubs": [
+      "Indore",
+      "Jabalpur",
+      "Nagpur"
+    ]
+  },
+  {
+    "city": "Indore",
+    "state": "Madhya Pradesh",
+    "lat": 22.7196,
+    "lng": 75.8577,
+    "transit_hubs": [
+      "Ujjain",
+      "Bhopal",
+      "Ahmedabad",
+      "Mumbai"
+    ]
+  },
+  {
+    "city": "Ahmedabad",
+    "state": "Gujarat",
+    "lat": 23.0225,
+    "lng": 72.5714,
+    "transit_hubs": [
+      "Gandhinagar",
+      "Vadodara",
+      "Surat",
+      "Mumbai"
+    ]
+  },
+  {
+    "city": "Surat",
+    "state": "Gujarat",
+    "lat": 21.1702,
+    "lng": 72.8311,
+    "transit_hubs": [
+      "Vadodara",
+      "Ahmedabad",
+      "Mumbai"
+    ]
+  },
+  {
+    "city": "Vadodara",
+    "state": "Gujarat",
+    "lat": 22.3072,
+    "lng": 73.1812,
+    "transit_hubs": [
+      "Surat",
+      "Ahmedabad",
+      "Mumbai"
+    ]
+  },
+  {
+    "city": "Kolkata",
+    "state": "West Bengal",
+    "lat": 22.5726,
+    "lng": 88.3639,
+    "transit_hubs": [
+      "Howrah",
+      "Bhubaneswar",
+      "Patna",
+      "Delhi"
+    ]
+  },
+  {
+    "city": "Calcutta",
+    "state": "West Bengal",
+    "lat": 22.5726,
+    "lng": 88.3639,
+    "transit_hubs": [
+      "Howrah",
+      "Bhubaneswar",
+      "Patna",
+      "Delhi"
+    ]
+  },
+  {
+    "city": "Patna",
+    "state": "Bihar",
+    "lat": 25.5941,
+    "lng": 85.1376,
+    "transit_hubs": [
+      "Muzaffarpur",
+      "Gaya",
+      "Ranchi",
+      "Kolkata"
+    ]
+  },
+  {
+    "city": "Ranchi",
+    "state": "Jharkhand",
+    "lat": 23.3441,
+    "lng": 85.3096,
+    "transit_hubs": [
+      "Jamshedpur",
+      "Patna",
+      "Kolkata"
+    ]
+  },
+  {
+    "city": "Bhubaneswar",
+    "state": "Odisha",
+    "lat": 20.2961,
+    "lng": 85.8245,
+    "transit_hubs": [
+      "Cuttack",
+      "Visakhapatnam",
+      "Kolkata"
+    ]
+  },
+  {
+    "city": "Guwahati",
+    "state": "Assam",
+    "lat": 26.1445,
+    "lng": 91.7362,
+    "transit_hubs": [
+      "Shillong",
+      "Siliguri",
+      "Kolkata"
+    ]
+  },
+  {
+    "city": "Raipur",
+    "state": "Chhattisgarh",
+    "lat": 21.2514,
+    "lng": 81.6296,
+    "transit_hubs": [
+      "Bilaspur",
+      "Nagpur",
+      "Bhubaneswar"
+    ]
+  }
+]

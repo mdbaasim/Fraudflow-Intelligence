@@ -1,0 +1,4920 @@
+<!DOCTYPE html>
+
+
+<html lang="en">
+
+
+<head>
+
+
+ <meta charset="UTF-8">
+
+
+ <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+ <title>FraudFlow Intelligence | Cyber Financial Fraud Predictive Analytics (SIH26184)</title>
+
+
+ 
+
+
+ <!-- Inter & JetBrains Mono Fonts -->
+
+
+ <link rel="preconnect" href="https://fonts.googleapis.com">
+
+
+ <link rel="preconnect" href="https://fonts.gstatic.com">
+
+
+ <link rel="preconnect" href="https://fonts.googleapis.com">
+
+
+ <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+
+ <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400;1,600&family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+
+
+
+
+ <!-- Leaflet Map CSS -->
+
+
+ <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin=""/>
+
+
+
+
+
+ <!-- Enterprise Dark Violet Frosted Glass Stylesheet -->
+
+
+ <link rel="stylesheet" href="./styles.css?v=4.6.0">
+
+
+</head>
+
+
+<body>
+
+
+
+
+
+ <!-- Top Header Navigation Bar (Matching Reference Layout) -->
+
+
+ <header class="top-header">
+
+
+ <div class="brand-section">
+        <!-- 3-Line Hamburger Menu Trigger -->
+        <button type="button" class="btn-hamburger" id="btn-nav-hamburger" title="Navigation Menu (3 lines)" aria-label="Toggle Navigation Drawer">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round">
+            <line x1="3" y1="6" x2="21" y2="6"></line>
+            <line x1="3" y1="12" x2="21" y2="12"></line>
+            <line x1="3" y1="18" x2="21" y2="18"></line>
+          </svg>
+        </button>
+
+
+ <div class="brand-emblem-fi" title="FraudFlow Intelligence">
+
+
+ <span>FI</span>
+
+
+ </div>
+
+
+ <div class="brand-titles">
+          <div style="display: flex; align-items: center; gap: 8px;">
+            <h1>FraudFlow Intelligence</h1>
+            
+          </div>
+        </div>
+      </div>
+
+
+
+
+
+ 
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+      <!-- Header Search Bar -->
+
+
+ <div class="header-search-bar">
+
+
+ <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+
+
+ <circle cx="11" cy="11" r="8"></circle>
+
+
+ <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+
+
+ </svg>
+
+
+ <input type="text" placeholder="Search account, IFSC, UTR..." id="header-search-input">
+
+
+ </div>
+
+
+
+
+
+ <div class="header-right">
+
+<!-- Notification Bell & Active Alerts Popover -->
+
+
+ <div style="position: relative;">
+
+
+ <button type="button" class="header-icon-badge" id="btn-header-notifications" title="Active Operational Alerts">
+
+
+ <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+
+
+ <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"></path>
+
+
+ <path d="M13.73 21a2 2 0 0 1-3.46 0"></path>
+
+
+ </svg>
+
+
+ <span class="bell-dot" id="bell-dot"></span>
+
+
+ </button>
+
+
+
+
+
+ <!-- Dropdown Panel -->
+
+
+ <div class="notifications-dropdown" id="notifications-dropdown" style="display: none;">
+
+
+ <div class="notif-header">
+
+
+ <strong>Active Fraud Alerts</strong>
+
+
+ <span class="badge-critical-tag" id="notif-count-badge">2 New</span>
+
+
+ </div>
+
+
+ <div class="notif-list">
+
+
+ <div class="notif-item unread">
+
+
+ <span class="notif-indicator red"></span>
+
+
+ <div class="notif-text">
+
+
+ <div class="notif-title">Imminent Cash-Out Warning</div>
+
+
+ <div class="notif-desc">₹4,50,000 routed toward Chennai ATM network (30 min window).</div>
+
+
+ <div class="notif-time">Just now</div>
+
+
+ </div>
+
+
+ </div>
+
+
+ <div class="notif-item unread">
+
+
+ <span class="notif-indicator amber"></span>
+
+
+ <div class="notif-text">
+
+
+ <div class="notif-title">High-Velocity Mule Transfer</div>
+
+
+ <div class="notif-desc">Account forwarded 96% funds in under 8 minutes.</div>
+
+
+ <div class="notif-time">12m ago</div>
+
+
+ </div>
+
+
+ </div>
+
+
+ <div class="notif-item">
+
+
+ <span class="notif-indicator green"></span>
+
+
+ <div class="notif-text">
+
+
+ <div class="notif-title">Lien Directive Ready</div>
+
+
+ <div class="notif-desc">CrPC Section 91 notice generated for nodal bank.</div>
+
+
+ <div class="notif-time">25m ago</div>
+
+
+ </div>
+
+
+ </div>
+
+
+ </div>
+
+
+ <div class="notif-footer">
+
+
+ <button type="button" class="btn-clear-notifs" id="btn-clear-notifs">Clear alerts</button>
+
+
+ </div>
+
+
+ </div>
+
+
+ </div>
+
+
+
+
+
+ <!-- Hidden preserved triggers -->
+
+
+ <div id="btn-open-connectors" style="display: none;"></div>
+
+
+ <button id="btn-open-gov" style="display: none;"></button>
+
+
+
+
+
+ <!-- Officer Auth Session -->
+
+
+ <div id="officer-auth-container">
+
+
+ <button class="btn btn-primary" id="btn-open-login" style="padding: 5px 12px; font-size: 0.74rem;">
+
+
+ Officer Sign In
+
+
+ </button>
+
+
+ </div>
+
+
+ </div>
+
+
+ </header>
+
+
+
+
+
+ 
+  <!-- Navigation Drawer Backdrop -->
+  <div class="nav-drawer-backdrop" id="nav-drawer-backdrop"></div>
+
+  <!-- Left Navigation Drawer (Off-Canvas Pop-up) -->
+  <aside class="nav-drawer" id="nav-drawer" aria-label="Command Module Navigation">
+    <div class="nav-drawer-header">
+      <div class="drawer-title-group">
+        <div class="brand-emblem-fi drawer-emblem" title="FraudFlow Intelligence">
+          <span>FI</span>
+        </div>
+        <div class="drawer-title-text">
+          <strong>Command Modules</strong>
+          <span>National Cyber Crime Portal (NCRP)</span>
+        </div>
+      </div>
+      <button type="button" class="btn-close-drawer" id="btn-close-drawer" title="Close Menu (Esc)" aria-label="Close Navigation">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
+          <line x1="18" y1="6" x2="6" y2="18"></line>
+          <line x1="6" y1="6" x2="18" y2="18"></line>
+        </svg>
+      </button>
+    </div>
+
+    <div class="nav-drawer-body">
+      <div class="drawer-section-label">OPERATIONAL MODULES</div>
+      <nav class="nav-drawer-menu" id="header-nav-tabs-container">
+        <button type="button" class="nav-tab-btn nav-drawer-item active" data-tab="tab-dashboard" id="tab-btn-dash" onclick="handleDrawerNav('dashboard')">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <rect x="3" y="3" width="7" height="9" rx="1"></rect>
+            <rect x="14" y="3" width="7" height="5" rx="1"></rect>
+            <rect x="14" y="12" width="7" height="9" rx="1"></rect>
+            <rect x="3" y="16" width="7" height="5" rx="1"></rect>
+          </svg>
+          <div class="drawer-item-label">
+            <strong>Dashboard</strong>
+            <small>Executive Command Center</small>
+          </div>
+          <span class="drawer-badge-live">LIVE</span>
+        </button>
+
+        <button type="button" class="nav-tab-btn nav-drawer-item" data-tab="tab-tx-flow" id="tab-btn-flow" onclick="handleDrawerNav('tx-flow')">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline>
+          </svg>
+          <div class="drawer-item-label">
+            <strong>Transaction Flow</strong>
+            <small>Multi-Hop Financial Sankey</small>
+          </div>
+        </button>
+
+        <button type="button" class="nav-tab-btn nav-drawer-item" data-tab="tab-layering" id="tab-btn-layering" onclick="handleDrawerNav('layering')">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="18" cy="5" r="3"></circle>
+            <circle cx="6" cy="12" r="3"></circle>
+            <circle cx="18" cy="19" r="3"></circle>
+            <line x1="8.59" y1="13.51" x2="15.42" y2="17.49"></line>
+            <line x1="15.41" y1="6.51" x2="8.59" y2="10.49"></line>
+          </svg>
+          <div class="drawer-item-label">
+            <strong>Layering Topology</strong>
+            <small>Interactive Mule Graph (GNN)</small>
+          </div>
+        </button>
+
+        <button type="button" class="nav-tab-btn nav-drawer-item" data-tab="tab-risk-analysis" id="tab-btn-risk" onclick="handleDrawerNav('risk-analysis')">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+          </svg>
+          <div class="drawer-item-label">
+            <strong>Risk Accounts</strong>
+            <small>Priority Mule Matrix</small>
+          </div>
+        </button>
+
+        <button type="button" class="nav-tab-btn nav-drawer-item" data-tab="tab-map-cashout" id="tab-btn-map" onclick="handleDrawerNav('map-cashout')">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <polygon points="1 6 1 22 8 18 16 22 23 18 23 2 16 6 8 2 1 6"></polygon>
+            <line x1="8" y1="2" x2="8" y2="18"></line>
+            <line x1="16" y1="6" x2="16" y2="22"></line>
+          </svg>
+          <div class="drawer-item-label">
+            <strong>Cash-Out Map</strong>
+            <small>ATM &amp; Branch Geo Radar</small>
+          </div>
+        </button>
+
+        <button type="button" class="nav-tab-btn nav-drawer-item" data-tab="tab-reports" id="tab-btn-reports" onclick="handleDrawerNav('reports')">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+            <polyline points="14 2 14 8 20 8"></polyline>
+            <line x1="16" y1="13" x2="8" y2="13"></line>
+            <line x1="16" y1="17" x2="8" y2="17"></line>
+            <polyline points="10 9 9 9 8 9"></polyline>
+          </svg>
+          <div class="drawer-item-label">
+            <strong>Reports &amp; Dossiers</strong>
+            <small>Sec 65B &amp; Sec 102 Evidence</small>
+          </div>
+        </button>
+      </nav>
+
+      <!-- Operational Intelligence & Temporal Controls -->
+      <div class="drawer-section-label" style="margin-top: 1.25rem;">INTELLIGENCE &amp; TEMPORAL STREAM</div>
+      <div class="drawer-controls-card">
+        <div class="drawer-control-row">
+          <label for="select-intelligence-feed">
+            <span class="feed-dot-pulse"></span>
+            <span>Active Feed</span>
+          </label>
+          <select id="select-intelligence-feed" class="drawer-select">
+            <option value="FEED_NCRP_ACTIVE">National Portal (NCRP)</option>
+            <option value="FEED_FIU_STR">FIU-IND Stream</option>
+            <option value="FEED_BANK_MULE_API">Bank Mule Stream</option>
+            <option value="FEED_LE_COMPLAINT">Police Case Docket</option>
+          </select>
+        </div>
+
+        <div class="drawer-control-row">
+          <label for="select-lookback-window">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#0a2540" stroke-width="2.5">
+              <circle cx="12" cy="12" r="10"></circle>
+              <polyline points="12 6 12 12 16 14"></polyline>
+            </svg>
+            <span>Time Window</span>
+          </label>
+          <select id="select-lookback-window" class="drawer-select" title="Time window to trace connected accounts">
+            <option value="24H">24 Hours</option>
+            <option value="7D" selected>7 Days</option>
+            <option value="30D">30 Days</option>
+            <option value="60D">60 Days</option>
+            <option value="CUSTOM">Custom Range</option>
+          </select>
+        </div>
+      </div>
+    </div>
+
+    <div class="nav-drawer-footer">
+      <div class="drawer-footer-actions">
+        <button class="btn-drawer-action" id="btn-open-benchmarks" title="Compare AI Model Accuracy &amp; Speed">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+          <span>AI Accuracy</span>
+        </button>
+
+        <div class="system-status-indicator" id="btn-open-blockchain" title="Inspect Forensic Blockchain (Section 65B)" style="cursor: pointer;">
+          <span class="status-dot" id="dot-blockchain-status"></span>
+          <span id="label-blockchain-status">11 Blocks Verified</span>
+        </div>
+      </div>
+      <div class="drawer-telemetry">
+        <span class="drawer-telemetry-dot"></span>
+        <span>Forensic Ledger: <strong>Sec 65B Anchored</strong></span>
+      </div>
+    </div>
+  </aside>
+
+  <!-- Preserved hidden disclaimer hook -->
+  <a href="#" id="link-read-disclaimer" style="display: none;"></a>
+
+  <!-- Primary Application Layout -->
+  <div class="app-layout-wrapper">
+
+    <!-- Left Sidebar: Case Filing & Intake -->
+    <aside class="left-sidebar">
+
+      <!-- Active Case Intake -->
+      <div class="sidebar-case-intake-card">
+        <div class="cmd-case-intake-sidebar">
+          <div class="cmd-badge-live">
+            <span class="live-dot-pulse"></span>
+            <span>ACTIVE CASE</span>
+          </div>
+          <div class="cmd-select-wrap">
+
+
+ <select id="select-case" class="cmd-case-select">
+
+
+ <option value="">Accessing database...</option>
+
+
+ </select>
+
+
+ </div>
+
+
+ </div>
+
+
+
+
+
+ <button class="btn-cmd-analyze btn-sidebar-execute" id="btn-analyze-case" title="Trace money transfers and find fraud accounts" style="visibility: visible !important; display: flex !important;">
+          <span id="spinner-analyze" class="spinner" style="display: none !important; animation: none !important; width: 0; height: 0;"></span>
+          
+
+
+ <span id="btn-analyze-text">Execute Flow Analysis &amp; Forecast</span>
+
+
+ </button>
+
+
+
+
+
+ 
+
+
+ <!-- Golden Hour Operational HUD & Rapid Blast Strip -->
+
+
+ <div class="golden-hour-hud-card" id="golden-hour-hud-card" style="display: none !important; visibility: hidden !important; height: 0 !important; margin: 0 !important; padding: 0 !important; overflow: hidden !important;">
+
+
+ <div class="golden-hour-header">
+
+
+ <div class="golden-hour-badge pulse-red">
+
+
+ <span class="golden-hour-dot"></span>
+
+
+ <span id="golden-hour-status-label">GOLDEN HOUR ACTIVE</span>
+
+
+ </div>
+
+
+ <span class="golden-hour-timer" id="golden-hour-timer">42:15 REMAINING</span>
+
+
+ </div>
+
+
+ <div class="funds-saved-strip">
+
+
+ <span class="funds-saved-label">Funds Secured:</span>
+
+
+ <strong class="funds-saved-val" id="counter-funds-saved">₹0</strong>
+
+
+ </div>
+
+
+ <button type="button" class="btn-emergency-blast" id="btn-emergency-freeze-blast">
+ Authorize Sec 102 Lien Notice
+ </button>
+ </div>
+
+
+
+
+
+ <!-- Preserved DOM IDs for script state compatibility -->
+
+
+ <div id="cmd-victim-summary" style="display: none;">
+
+
+ <span id="cmd-victim-name-display"></span>
+
+
+ <span id="cmd-victim-city-display"></span>
+
+
+ <span id="cmd-victim-loss-display"></span>
+
+
+ </div>
+
+
+ <button id="btn-load-demo" style="display: none;"></button>
+
+
+ <button id="btn-add-tx-modal" style="display: none;"></button>
+
+
+ <button id="btn-sidebar-blockchain" style="display: none;"></button>
+
+
+ </div>
+
+
+
+
+
+ <!-- Case Information & Filing Section (Embedded directly in sidebar FIRST - NO POPUPS) -->
+
+
+ <div class="sidebar-case-card" id="sidebar-docket-body">
+
+
+ <div class="sidebar-case-header">
+
+
+ <div style="display: flex; align-items: center; gap: 6px;">
+
+
+ <span class="live-dot-pulse"></span>
+
+
+ <strong>Case Details</strong>
+
+
+ </div>
+
+
+ <button type="button" class="btn-sidebar-new-case" id="btn-new-case" title="Start a fresh case">+ New Case</button>
+
+
+ </div>
+
+
+
+
+
+ <div class="form-group">
+
+
+ <label for="input-complaint-no">Complaint Number</label>
+
+
+ <input type="text" id="input-complaint-no" class="form-input" value="NCRP-2026-TN-981240">
+
+
+ </div>
+
+
+
+
+
+ <div class="form-group">
+
+
+ <label for="input-victim-name">Victim Name</label>
+
+
+ <input type="text" id="input-victim-name" class="form-input" value="A. Murugesan">
+
+
+ </div>
+
+
+
+
+
+ <div class="form-group">
+
+
+ <label for="input-victim-city">Victim City</label>
+
+
+ <input type="text" id="input-victim-city" class="form-input" value="Dindigul">
+
+
+ </div>
+
+
+
+
+
+ <div class="form-group">
+
+
+ <label for="select-terminal-city">Cash-Out City</label>
+
+
+ <select id="select-terminal-city" class="form-select">
+
+
+ <option value="auto">Auto-Detect</option>
+
+
+ <option value="Chennai">Chennai</option>
+
+
+ <option value="Bengaluru">Bengaluru</option>
+
+
+ <option value="Mumbai">Mumbai</option>
+
+
+ <option value="Delhi">Delhi</option>
+
+
+ <option value="Madurai">Madurai</option>
+
+
+ <option value="Coimbatore">Coimbatore</option>
+
+
+ </select>
+
+
+ </div>
+
+
+
+
+
+ <div class="form-group">
+
+
+ <label for="input-loss-amount">Amount Lost (₹)</label>
+
+
+ <input type="number" id="input-loss-amount" class="form-input" value="500000" step="10000">
+
+
+ </div>
+
+
+
+
+
+ <div class="form-group">
+
+
+ <label for="input-complaint-dt">Complaint Date &amp; Time</label>
+
+
+ <input type="datetime-local" id="input-complaint-dt" class="form-input">
+
+
+ </div>
+
+
+
+
+
+ <button type="button" class="btn btn-primary" style="margin-top: 4px; width: 100%; font-size: 0.78rem; padding: 7px 10px;" onclick="document.getElementById('btn-analyze-case').click();">
+
+
+ Save &amp; Trace Fraud
+
+
+ </button>
+
+
+
+
+
+ <!-- Preserved hidden controls for script compatibility -->
+
+
+ <div style="display: none;">
+
+
+ <input type="range" id="slider-coverage" min="10" max="100" value="85">
+
+
+ <span id="label-coverage-val">85%</span>
+
+
+ <button id="btn-predict-cashout"></button>
+
+
+ <button id="btn-reset-demo"></button>
+
+
+ <button id="btn-toggle-docket"></button>
+
+
+ <div id="docket-drawer-overlay"></div>
+
+
+ <span id="side-victim-name"></span>
+
+
+ <span id="side-victim-loss"></span>
+
+
+ <span id="side-victim-route"></span>
+
+
+ </div>
+
+
+ </div>
+
+
+
+
+
+ <!-- Preserved Navigation IDs (Taken out of visible sidebar as requested) -->
+
+
+ <div style="display: none;" id="sidebar-nav-preserved">
+
+
+ <a href="#dashboard" class="sidebar-nav-item active" id="side-nav-dashboard"></a>
+
+
+ <a href="#tx-flow" class="sidebar-nav-item" id="side-nav-tx-flow"></a>
+
+
+ <a href="#layering" class="sidebar-nav-item" id="side-nav-layering"></a>
+
+
+ <a href="#risk-accounts" class="sidebar-nav-item" id="side-nav-risk"></a>
+
+
+ <a href="#cashout" class="sidebar-nav-item" id="side-nav-cashout"></a>
+
+
+ <a href="#reports" class="sidebar-nav-item" id="side-nav-reports"></a>
+
+
+ <a href="#settings" class="sidebar-nav-item" id="side-nav-settings"></a>
+
+
+ </div>
+
+
+
+
+
+ </aside>
+
+
+
+
+
+ <!-- Main Dynamic Content Workspace -->
+
+
+ <main class="main-stage-content">
+
+
+
+
+
+ <!-- =====================================================================
+
+
+ TAB 0: EXECUTIVE FRAUD DASHBOARD (Awsmd Dark Matte Fintech Theme)
+
+
+ ===================================================================== -->
+
+
+ <div class="tab-view-container active" id="tab-dashboard">
+
+
+ <div class="dash-view-layout">
+
+
+ 
+
+
+ <!-- Top Title & Pill Filters (Exact Match to Reference Photo) -->
+
+
+ <div class="dash-header-strip">
+
+
+ <div class="dash-title-block">
+
+
+ <h2 class="dash-main-heading">Financial Fraud Intelligence</h2>
+
+
+ <p class="dash-main-subtext">Track, analyze, and intercept multi-hop mule layering networks</p>
+
+
+ </div>
+
+
+
+
+
+ </div>
+
+
+
+
+
+      <!-- Finnova 4 Top Stat Squircles (Matching Reference Design) -->
+
+
+      <div class="finnova-stat-grid">
+
+
+        
+
+
+        <!-- Card 1: Defrauded Volume & Urgent Alert Pill -->
+
+
+        <div class="finnova-stat-card">
+
+
+          <div class="finnova-card-head">
+
+
+            <span class="finnova-card-tag">Defrauded Volume</span>
+
+
+            <span class="finnova-badge-urgent" id="dash-defrauded-badge">+24% Urgent Alert</span>
+
+
+          </div>
+
+
+          <div class="finnova-card-metric-wrap">
+
+
+            <span class="finnova-card-val" id="dash-defrauded-val">₹5,00,000</span>
+
+
+          </div>
+
+
+          <div class="finnova-card-foot">
+
+
+            <span class="finnova-foot-sub">Total Multi-Hop Volume Under Interception</span>
+
+
+            <div class="finnova-mini-channel-chips">
+
+
+              <span class="mini-chip">UPI 48%</span>
+
+
+              <span class="mini-chip">IMPS 34%</span>
+
+
+            </div>
+
+
+          </div>
+
+
+        </div>
+
+
+
+
+
+        <!-- Card 2: AI Forecast Probability with Vertical Mini Bar Chart -->
+
+
+        <div class="finnova-stat-card">
+
+
+          <div class="finnova-card-head">
+
+
+            <span class="finnova-card-tag">AI Cash-Out Probability</span>
+
+
+            <span class="finnova-badge-purple" id="dash-cashout-badge">Active Model</span>
+
+
+          </div>
+
+
+          <div class="finnova-card-metric-wrap">
+
+
+            <span class="finnova-card-val" id="dash-cashout-prob-val">89.5%</span>
+
+
+            <span class="finnova-val-sub" id="dash-cashout-prob-sub">Imminent</span>
+
+
+          </div>
+
+
+          <!-- Vertical Mini Bar Chart (Finnova Signature Element) -->
+
+
+          <div class="finnova-barchart-wrap">
+
+
+            <div class="finnova-mini-bars" id="dash-mini-bars-container">
+
+
+              <div class="bar-col" style="height: 38%;" title="Hop 1: 38%"></div>
+
+
+              <div class="bar-col" style="height: 52%;" title="Hop 2: 52%"></div>
+
+
+              <div class="bar-col" style="height: 42%;" title="Hop 3: 42%"></div>
+
+
+              <div class="bar-col" style="height: 68%;" title="Hop 4: 68%"></div>
+
+
+              <div class="bar-col active-peak" style="height: 94%;" title="Terminal Hop: 94% [PEAK]"></div>
+
+
+              <div class="bar-col" style="height: 60%;" title="Holdover: 60%"></div>
+
+
+            </div>
+
+
+            <span class="finnova-foot-sub" id="dash-cashout-window-lbl">Estimated Liquidation: 20-30 min window</span>
+
+
+          </div>
+
+
+        </div>
+
+
+
+
+
+        <!-- Card 3: Hero Forensic Risk Score (Retaining dash-score-val and Wave SVG) -->
+
+
+        <div class="finnova-stat-card finnova-card-hero">
+
+
+          <div class="finnova-card-head">
+
+
+            <span class="finnova-card-tag">Forensic Risk &amp; Dispersion Velocity</span>
+
+
+            <span class="finnova-badge-pill" id="dash-score-badge">+5 pts &nearr;</span>
+
+
+          </div>
+
+
+          <div class="finnova-card-metric-wrap">
+
+
+            <span class="finnova-card-val" id="dash-score-val">630</span>
+
+
+            <span class="finnova-val-sub" id="dash-score-sub">/ 850 High Risk</span>
+
+
+          </div>
+
+
+          <!-- Glowing Wave Sparkline Area Chart -->
+
+
+          <div class="dash-sparkwave-container">
+
+
+            <svg class="dash-sparkwave-svg" id="dash-sparkwave-svg" viewBox="0 0 600 125" preserveAspectRatio="none">
+              <defs>
+                <linearGradient id="finnovaWaveGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+                  <stop offset="0%" stop-color="rgba(2, 132, 199, 0.40)" />
+                  <stop offset="60%" stop-color="rgba(2, 132, 199, 0.10)" />
+                  <stop offset="100%" stop-color="rgba(15, 23, 42, 0)" />
+                </linearGradient>
+
+                <linearGradient id="finnovaLineGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+                  <stop offset="0%" stop-color="#38bdf8" />
+                  <stop offset="60%" stop-color="#0284c7" />
+                  <stop offset="100%" stop-color="#0ea5e9" />
+                </linearGradient>
+              </defs>
+
+              <!-- Forensic Telemetry Gridlines -->
+              <line x1="0" y1="28" x2="600" y2="28" stroke="#cbd5e1" stroke-width="1.2" stroke-dasharray="4,3" />
+              <line x1="0" y1="65" x2="600" y2="65" stroke="#cbd5e1" stroke-width="1.2" stroke-dasharray="4,3" />
+              <line x1="0" y1="105" x2="600" y2="105" stroke="#94a3b8" stroke-width="1.5" />
+
+              <!-- Forensic Y-Axis Velocity Calibration Ticks (Bold High Contrast) -->
+              <text x="8" y="24" fill="#b91c1c" font-size="10" font-weight="800" font-family="'JetBrains Mono', monospace">₹3.5L/m [CRITICAL]</text>
+              <text x="8" y="61" fill="#c2410c" font-size="10" font-weight="800" font-family="'JetBrains Mono', monospace">₹1.5L/m [LAYER-1]</text>
+              <text x="8" y="101" fill="#0f172a" font-size="10" font-weight="800" font-family="'JetBrains Mono', monospace">₹0</text>
+
+              <!-- Dynamic Area & Line Paths -->
+              <path id="dash-sparkwave-path-area" d="M 0 95 Q 80 90, 150 80 T 300 70 T 420 50 T 510 30 L 510 120 L 0 120 Z" fill="url(#finnovaWaveGrad)" />
+              <path id="dash-sparkwave-path-line" d="M 0 95 Q 80 90, 150 80 T 300 70 T 420 50 T 510 30 L 600 28" fill="none" stroke="url(#finnovaLineGrad)" stroke-width="3" />
+
+              <!-- Terminal Marker & Pulse -->
+              <line id="dash-sparkwave-marker-line" x1="510" y1="30" x2="510" y2="105" stroke="#dc2626" stroke-width="2" stroke-dasharray="3,3" opacity="0.95" />
+              <circle id="dash-sparkwave-pulse-ring" cx="510" cy="30" r="5" fill="none" stroke="#dc2626" stroke-width="2.2" class="dash-sparkwave-pulse-ring">
+                <animate attributeName="r" values="5;22;5" dur="1.8s" repeatCount="indefinite" />
+                <animate attributeName="opacity" values="1;0.05;1" dur="1.8s" repeatCount="indefinite" />
+                <animate attributeName="stroke-width" values="2.4;0.5;2.4" dur="1.8s" repeatCount="indefinite" />
+              </circle>
+              <circle id="dash-sparkwave-marker-dot" cx="510" cy="30" r="5" fill="#ffffff" stroke="#dc2626" stroke-width="3">
+                <animate attributeName="r" values="4.5;6;4.5" dur="1.2s" repeatCount="indefinite" />
+              </circle>
+
+              <!-- X-Axis Temporal Timeline Calibration (Bold High Contrast) -->
+              <text x="50" y="119" fill="#0f172a" font-size="9.5" font-weight="800" font-family="'JetBrains Mono', monospace">T0 10:42 INFLOW</text>
+              <text x="250" y="119" fill="#0f172a" font-size="9.5" font-weight="800" font-family="'JetBrains Mono', monospace">HOP 2 10:56 TRANSIT</text>
+              <text x="470" y="119" fill="#b91c1c" font-weight="900" font-size="9.5" font-family="'JetBrains Mono', monospace">T_CASHOUT 11:15</text>
+            </svg>
+
+
+          </div>
+
+
+          <div class="finnova-card-foot" style="margin-top: 2px;">
+
+
+            <span class="finnova-foot-sub" id="dash-score-cadence-lbl">Rapid mule layering cadence flagged</span>
+
+
+          </div>
+
+
+        </div>
+
+
+
+
+
+        <!-- Card 4: Primary Cash-Out Corridor & Holdable Balance -->
+
+
+        <div class="finnova-stat-card">
+
+
+          <div class="finnova-card-head">
+
+
+            <span class="finnova-card-tag">Primary Cash-Out Corridor</span>
+
+
+            <span class="finnova-badge-corridor" id="dash-corridor-badge">Chennai ATM</span>
+
+
+          </div>
+
+
+          <div class="finnova-card-metric-wrap">
+
+
+            <span class="finnova-card-val" id="dash-holdable-val" style="color: #059669;">₹4,12,000</span>
+
+
+            <span class="finnova-val-sub" id="dash-holdable-sub">Holdable</span>
+
+
+          </div>
+
+
+          <div class="finnova-card-foot">
+
+
+            <div class="finnova-corridor-progress">
+
+
+              <div class="progress-bar-fill" id="dash-holdable-progress-fill" style="width: 82.4%;"></div>
+
+
+            </div>
+
+
+            <span class="finnova-foot-sub" id="dash-holdable-lbl" style="margin-top: 4px;">82.4% actionable balance identified in Layer-1</span>
+
+
+          </div>
+
+
+        </div>
+
+
+
+
+
+      </div>
+
+
+
+
+
+ <!-- Finnova Deep Navy Deck: Recent Case Hops & Intelligence -->
+
+
+ <div class="dash-recent-section finnova-deck-navy">
+
+
+ <!-- Finnova Console Notch Header -->
+
+
+ <div class="finnova-deck-notch">
+
+
+ <div class="deck-tabs-group">
+
+
+ <button type="button" class="deck-tab active" style="cursor: default;" title="End-to-End Forensic Money Trail">All Incident Hops (End-to-End Lifecycle)</button>
+
+
+ </div>
+
+
+ <button class="btn-deck-action" onclick="switchTab('tx-flow')">
+
+
+ Inspect Live Directed Graph
+
+
+ </button>
+
+
+ </div>
+
+
+ 
+
+
+ <div class="dash-recent-header" style="padding: 0.75rem 1.25rem 0.25rem 1.25rem;">
+
+
+ <div class="dash-recent-title-group">
+
+
+ <h3 style="color: #0f172a; font-size: 0.95rem; font-weight: 800;">Multi-Hop Audit Stream</h3>
+
+
+ <span class="dash-count-pill" id="audit-stream-count-pill" style="background: #f1f5f9; color: #0a2540; border: 1.5px solid #cbd5e1; font-weight: 800;">4 Stages Complete</span>
+
+
+ </div>
+
+
+ </div>
+
+
+
+
+
+ <div class="dash-recent-timeline-card">
+
+
+ <div class="dash-timeline-entry">
+
+
+ <div class="dash-timeline-marker marker-victim"></div>
+
+
+ <div class="dash-timeline-body">
+
+
+ <div class="dash-timeline-row">
+
+
+ <strong>Stage 1: Complaint Inflow Registered</strong>
+
+
+ <span class="dash-entry-amount text-inflow" id="dash-timeline-inflow-amt">+₹5,00,000</span>
+
+
+ </div>
+
+
+ <div class="dash-timeline-sub" id="dash-timeline-victim-desc">A. Murugesan | Axis Bank Dindigul Acc #981240 | NCRP Ref #NCRP-2026-TN-981240</div>
+
+
+ </div>
+
+
+ <div class="dash-timeline-time">10:42:15</div>
+
+
+ </div>
+
+
+
+
+
+ <div class="dash-timeline-entry">
+
+
+ <div class="dash-timeline-marker marker-layer1"></div>
+
+
+ <div class="dash-timeline-body">
+
+
+ <div class="dash-timeline-row">
+
+
+ <strong>Stage 2: Layer-1 Rapid Multi-Hop Splitting</strong>
+
+
+ <span class="dash-entry-amount text-split" id="dash-timeline-split-amt">₹2,40,000 + ₹2,60,000</span>
+
+
+ </div>
+
+
+ <div class="dash-timeline-sub" id="dash-timeline-mule-desc">Dispersed to HDFC Acc #48201 (Chennai) and ICICI Acc #71904 (Bengaluru) within 14 mins</div>
+
+
+ </div>
+
+
+ <div class="dash-timeline-time">10:56:30</div>
+
+
+ </div>
+
+
+
+
+
+ <div class="dash-timeline-entry">
+
+
+ <div class="dash-timeline-marker marker-cashout"></div>
+
+
+ <div class="dash-timeline-body">
+
+
+ <div class="dash-timeline-row">
+
+
+ <strong>Stage 3: Predictive Cash-Out Signal</strong>
+
+
+ <span class="dash-entry-amount text-predicted" id="dash-timeline-pred-amt">₹1,80,000 Risk Flagged</span>
+
+
+ </div>
+
+
+ <div class="dash-timeline-sub" id="dash-timeline-pred-desc">Terminal cluster detected at T. Nagar Commercial ATM Corridors | Section 65B Notice Ready</div>
+
+
+ </div>
+
+
+ <div class="dash-timeline-time">11:15:00</div>
+
+
+ </div>
+
+
+
+ <div class="dash-timeline-entry">
+
+
+ <div class="dash-timeline-marker marker-crpc"></div>
+
+
+ <div class="dash-timeline-body">
+
+
+ <div class="dash-timeline-row">
+
+
+ <strong>Stage 4: Statutory CrPC 102 Lien Directive</strong>
+
+
+ <span class="dash-entry-amount text-lien" style="color: #0369a1; font-weight: 700;">Auto-Notice Dispatched</span>
+
+
+ </div>
+
+
+ <div class="dash-timeline-sub">Section 102 CrPC legal freeze anchored on immutable ledger | Section 65B compliance verified</div>
+
+
+ </div>
+
+
+ <div class="dash-timeline-time">11:18:45</div>
+
+
+ </div>
+
+
+ </div>
+
+
+ </div>
+
+
+
+
+
+ </div>
+
+
+ </div>
+
+
+
+
+
+ <!-- =====================================================================
+
+
+ TAB 1: TRANSACTION FLOW (Exact Reference Photo Layout)
+
+
+ ===================================================================== -->
+
+
+ <div class="tab-view-container" id="tab-tx-flow">
+
+
+ 
+
+
+ <!-- Top Split Grid: Flow Topology (Left) + Account Details Inspector (Right) -->
+
+
+ <div class="flow-top-grid">
+
+
+ 
+
+
+ <!-- Transaction Flow & Layering Topology Card -->
+
+
+ <div class="topology-hero-card">
+
+
+ 
+
+
+ <div class="topology-header">
+
+
+ <div class="topology-title-area">
+
+
+ <div class="topology-icon-tag">
+
+
+ <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+
+
+ <rect x="2" y="2" width="6" height="6" rx="1"></rect>
+
+
+ <rect x="16" y="2" width="6" height="6" rx="1"></rect>
+
+
+ <rect x="16" y="16" width="6" height="6" rx="1"></rect>
+
+
+ <rect x="2" y="16" width="6" height="6" rx="1"></rect>
+
+
+ <line x1="8" y1="5" x2="16" y2="5"></line>
+
+
+ <line x1="5" y1="8" x2="5" y2="16"></line>
+
+
+ <line x1="19" y1="8" x2="19" y2="16"></line>
+
+
+ <line x1="8" y1="19" x2="16" y2="19"></line>
+
+
+ </svg>
+
+
+ </div>
+
+
+ <div>
+
+
+ <div style="display: flex; align-items: center; gap: 8px;">
+
+
+ <h2>Transaction Flow &amp; Layering Topology</h2>
+
+
+ </div>
+
+
+ <p class="topology-subtitle">Visualizing money movement from the complaint account to potential cash-out points</p>
+
+
+ </div>
+
+
+ </div>
+
+
+
+
+
+ <div class="topology-header-actions">
+
+
+ <button type="button" class="btn-bridge-map" onclick="switchTab('map-cashout')" title="Switch directly to Tactical Geospatial Leaflet Map view">
+
+
+ Tactical Leaflet Map &rarr;
+
+
+ </button>
+
+
+ <div class="case-badge-pill" id="hero-case-badge">
+
+
+ <span>Case #CASE-DIN-2026-001</span>
+
+
+ </div>
+
+
+ <div class="risk-badge-outline-red">
+
+
+ <span>High Risk</span>
+
+
+ </div>
+
+
+ </div>
+
+
+ </div>
+
+
+
+
+
+ <!-- Integrated Color-Coded Legend (Matching Reference Photo) -->
+
+
+ <div class="topology-legend-strip">
+
+
+ <div class="top-legend-item">
+
+
+ <span class="legend-color-dot dot-victim"></span>
+
+
+ <span>Victim Account</span>
+
+
+ </div>
+
+
+ <div class="top-legend-item">
+
+
+ <span class="legend-color-dot dot-mule"></span>
+
+
+ <span>Intermediate / Mule</span>
+
+
+ </div>
+
+
+ <div class="top-legend-item">
+
+
+ <span class="legend-color-dot dot-layering"></span>
+
+
+ <span>Layering Account</span>
+
+
+ </div>
+
+
+ <div class="top-legend-item">
+
+
+ <span class="legend-color-dot dot-cashout"></span>
+
+
+ <span>Cash-Out Account</span>
+
+
+ </div>
+
+
+ <div class="top-legend-item">
+
+
+ <span class="legend-color-dot dot-other"></span>
+
+
+ <span>Other Account</span>
+
+
+ </div>
+
+
+ </div>
+
+
+
+
+
+ <!-- Branching Directed Graph Canvas -->
+
+
+ <div class="topology-canvas-wrapper" id="graph-container">
+
+
+ <svg id="graph-svg"></svg>
+
+
+
+
+
+ <!-- In-Graph Zoom & Pan Controls (Matching Bottom Left of Photo) -->
+
+
+ <div class="graph-zoom-toolbar">
+
+
+ <button class="btn-zoom-ctrl" id="btn-zoom-in" title="Zoom In">+</button>
+
+
+ <button class="btn-zoom-ctrl" id="btn-zoom-out" title="Zoom Out">&minus;</button>
+
+
+ <button class="btn-zoom-ctrl" id="btn-zoom-fit" title="Expand to Full Screen">
+
+
+ <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+
+
+ <polyline points="15 3 21 3 21 9"></polyline>
+
+
+ <polyline points="9 21 3 21 3 15"></polyline>
+
+
+ <line x1="21" y1="3" x2="14" y2="10"></line>
+
+
+ <line x1="3" y1="21" x2="10" y2="14"></line>
+
+
+ </svg>
+
+
+ </button>
+
+
+ </div>
+
+
+
+
+
+ 
+
+
+ <!-- 4D Interactive Money Flow Playback & Scrubber Deck -->
+
+
+ <div class="flow-playback-toolbar" id="flow-playback-toolbar">
+
+
+ <div class="playback-controls-group">
+
+
+ <button type="button" class="btn-playback-ctrl" id="btn-flow-rewind" title="Rewind to start of case">
+
+
+ <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polygon points="11 19 2 12 11 5 11 19"/><polygon points="22 19 13 12 22 5 22 19"/></svg>
+
+
+ </button>
+
+
+ <button type="button" class="btn-playback-ctrl btn-playback-play" id="btn-flow-play" title="Play / Pause Money Flow Animation">
+
+
+ <svg id="icon-flow-play" width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+
+
+ <svg id="icon-flow-pause" width="13" height="13" viewBox="0 0 24 24" fill="currentColor" style="display:none;"><rect x="6" y="4" width="4" height="16"/><rect x="14" y="4" width="4" height="16"/></svg>
+
+
+ </button>
+
+
+ <button type="button" class="btn-playback-ctrl" id="btn-flow-step-fwd" title="Step forward to next hop">
+
+
+ <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polygon points="5 4 15 12 5 20 5 4"/><line x1="19" y1="5" x2="19" y2="19"/></svg>
+
+
+ </button>
+
+
+ <button type="button" class="btn-playback-speed" id="btn-flow-speed" title="Toggle animation playback speed">1x</button>
+
+
+ </div>
+
+
+ <div class="playback-slider-wrap">
+
+
+ <input type="range" class="flow-timeline-slider" id="flow-timeline-slider" min="0" max="100" value="100" step="1" title="Drag to scrub money flow across hops">
+
+
+ <div class="playback-status-readout">
+
+
+ <span id="flow-current-step-label">All Hops Rendered</span>
+
+
+ <span id="flow-current-amount-label">Cumulative: ₹5,00,000</span>
+
+
+ </div>
+
+
+ </div>
+
+
+ </div>
+
+
+
+
+
+ <div class="topology-bottom-info">
+
+
+ <span id="graph-node-edge-count">5 Accounts | 4 Directed Hops</span>
+
+
+ </div>
+
+
+ </div>
+
+
+
+
+
+ </div>
+
+
+
+
+
+ <!-- Account Details Master-Detail Inspector (Right Column) -->
+
+
+ <div class="account-details-card" id="account-details-panel">
+
+
+ 
+
+
+ <div class="account-details-header">
+
+
+ <h3>Account Details</h3>
+
+
+ </div>
+
+
+
+
+
+ <!-- Profile Summary -->
+
+
+ <div class="account-profile-summary">
+
+
+ <div class="bank-avatar-icon">
+
+
+ <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+
+
+ <path d="M3 21h18M3 10h18M5 10v11M19 10v11M9 10v11M14 10v11M12 3L2 10h20L12 3z"/>
+
+
+ </svg>
+
+
+ </div>
+
+
+ <div class="account-title-group">
+
+
+ <div class="account-name-row">
+
+
+ <strong id="detail-account-name">Cash-Out X</strong>
+
+
+ <span class="detail-badge-risk" id="detail-risk-badge">High Risk</span>
+
+
+ </div>
+
+
+ <span class="account-number-sub" id="detail-account-number">ACC-MULE-D-5104</span>
+
+
+ </div>
+
+
+ </div>
+
+
+
+
+
+ <!-- Metadata Table Rows -->
+
+
+ <div class="detail-rows-list">
+
+
+ <div class="detail-row">
+
+
+ <span class="detail-label">Account Type</span>
+
+
+ <span class="detail-val" id="detail-acc-type">Savings Account</span>
+
+
+ </div>
+
+
+ <div class="detail-row">
+
+
+ <span class="detail-label">Bank</span>
+
+
+ <span class="detail-val" id="detail-bank">State Bank of India</span>
+
+
+ </div>
+
+
+ <div class="detail-row">
+
+
+ <span class="detail-label">Account Age</span>
+
+
+ <span class="detail-val" id="detail-age">3 months</span>
+
+
+ </div>
+
+
+ <div class="detail-row">
+
+
+ <span class="detail-label">Total Inflow</span>
+
+
+ <span class="detail-val" id="detail-inflow">&#8377; 5,00,000</span>
+
+
+ </div>
+
+
+ <div class="detail-row">
+
+
+ <span class="detail-label">Total Outflow</span>
+
+
+ <span class="detail-val" id="detail-outflow">&#8377; 4,20,000</span>
+
+
+ </div>
+
+
+ <div class="detail-row">
+
+
+ <span class="detail-label">Transactions</span>
+
+
+ <span class="detail-val" id="detail-tx-count">4</span>
+
+
+ </div>
+
+
+ <div class="detail-row">
+
+
+ <span class="detail-label">Linked Accounts</span>
+
+
+ <span class="detail-val" id="detail-linked">2</span>
+
+
+ </div>
+
+
+ <div class="detail-row">
+
+
+ <span class="detail-label">First Seen</span>
+
+
+ <span class="detail-val" id="detail-first-seen">10:29 AM</span>
+
+
+ </div>
+
+
+ <div class="detail-row">
+
+
+ <span class="detail-label">Last Activity</span>
+
+
+ <span class="detail-val" id="detail-last-seen">10:30 AM</span>
+
+
+ </div>
+
+
+ <div class="detail-row row-risk">
+
+
+ <span class="detail-label">Risk Score</span>
+
+
+ <span class="detail-val-risk" id="detail-risk-score">95 / 100</span>
+
+
+ </div>
+
+
+ </div>
+
+
+
+
+
+ <!-- Prediction Callout Box (Matching Reference Photo) -->
+
+
+ <div class="prediction-callout-box" id="detail-prediction-box">
+
+
+ <div class="prediction-header">
+
+
+ <div class="prediction-icon-dot">
+
+
+ <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3">
+
+
+ <polyline points="20 6 9 17 4 12"></polyline>
+
+
+ </svg>
+
+
+ </div>
+
+
+ <span>Prediction</span>
+
+
+ </div>
+
+
+ <p class="prediction-text" id="detail-prediction-text">
+
+
+ 78% probability that funds will be cashed out from this account within the next 30 minutes.
+
+
+ </p>
+
+
+ 
+
+
+ <button class="btn-freeze-blast-callout" id="btn-quick-freeze-blast" type="button" title="Dispatch Section 102 CrPC statutory lien directives">
+
+
+ Dispatch Sec 102 Lien Directives
+
+
+ </button>
+
+
+
+
+
+ <button class="btn-freeze-quick" id="btn-quick-freeze-action">
+
+
+ Issue On-Chain Lien Directive (CrPC 91/102)
+
+
+ </button>
+
+
+ </div>
+
+
+
+
+
+ </div>
+
+
+
+
+
+ </div>
+
+
+
+
+
+ <!-- Bottom Split Grid: Transaction Timeline (Left) + Key Insights (Right) -->
+
+
+ <div class="flow-bottom-grid">
+
+
+ 
+
+
+ <!-- Transaction Timeline Table -->
+
+
+ <div class="timeline-table-card">
+
+
+ <div class="timeline-card-header">
+
+
+ <h3>Transaction Timeline</h3>
+
+
+ <span class="timeline-count-badge" id="timeline-count-badge">8 recorded hops</span>
+
+
+ </div>
+
+
+
+
+
+ <div class="timeline-table-scroll">
+
+
+ <table class="timeline-data-table">
+
+
+ <thead>
+
+
+ <tr>
+
+
+ <th>Time</th>
+
+
+ <th>From Account</th>
+
+
+ <th>To Account</th>
+
+
+ <th>Amount</th>
+
+
+ <th>Type</th>
+
+
+ <th>Layer</th>
+
+
+ </tr>
+
+
+ </thead>
+
+
+ <tbody id="timeline-table-body">
+
+
+ <!-- Dynamically rendered rows -->
+
+
+ </tbody>
+
+
+ </table>
+
+
+ </div>
+
+
+
+
+
+ <!-- Preserved legacy timeline container for ID compatibility -->
+
+
+ <div id="timeline-container" style="display: none;"></div>
+
+
+ </div>
+
+
+
+
+
+ <!-- Key Insights Card (Matching Reference Photo) -->
+
+
+ <div class="key-insights-card">
+
+
+ <div class="insights-card-header">
+
+
+ <h3>Key Insights</h3>
+
+
+ </div>
+
+
+
+
+
+ <div class="insights-list">
+
+
+ <!-- Insight Item 1: High Risk Detection -->
+
+
+ <div class="insight-item">
+
+
+ <div class="insight-icon icon-danger">
+
+
+ <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+
+
+ <circle cx="12" cy="12" r="10"></circle>
+
+
+ <line x1="12" y1="8" x2="12" y2="12"></line>
+
+
+ <line x1="12" y1="16" x2="12.01" y2="16"></line>
+
+
+ </svg>
+
+
+ </div>
+
+
+ <div class="insight-content">
+
+
+ <strong id="insight-1-title">5 high-risk accounts detected</strong>
+
+
+ <span>Mule / Layering / Cash-Out syndicate cluster</span>
+
+
+ </div>
+
+
+ </div>
+
+
+
+
+
+ <!-- Insight Item 2: Layering Behavior -->
+
+
+ <div class="insight-item">
+
+
+ <div class="insight-icon icon-warning">
+
+
+ <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+
+
+ <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path>
+
+
+ <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path>
+
+
+ </svg>
+
+
+ </div>
+
+
+ <div class="insight-content">
+
+
+ <strong id="insight-2-title">Funds split into multiple accounts within 5 minutes</strong>
+
+
+ <span>Rapid smurfing and structuring behavior identified</span>
+
+
+ </div>
+
+
+ </div>
+
+
+
+
+
+ <!-- Insight Item 3: Primary Cash-out Identified -->
+
+
+ <div class="insight-item">
+
+
+ <div class="insight-icon icon-purple">
+
+
+ <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+
+
+ <circle cx="12" cy="12" r="10"></circle>
+
+
+ <circle cx="12" cy="12" r="6"></circle>
+
+
+ <circle cx="12" cy="12" r="2"></circle>
+
+
+ </svg>
+
+
+ </div>
+
+
+ <div class="insight-content">
+
+
+ <strong id="insight-3-title">Cash-Out X identified as primary cash-out node</strong>
+
+
+ <span>78% probability of imminent ATM withdrawal</span>
+
+
+ </div>
+
+
+ </div>
+
+
+
+
+
+ <!-- Insight Item 4: Quick in-and-out Holding Time -->
+
+
+ <div class="insight-item">
+
+
+ <div class="insight-icon icon-teal">
+
+
+ <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+
+
+ <circle cx="12" cy="12" r="10"></circle>
+
+
+ <polyline points="12 6 12 12 16 14"></polyline>
+
+
+ </svg>
+
+
+ </div>
+
+
+ <div class="insight-content">
+
+
+ <strong id="insight-4-title">Typical mule behavior: quick in-and-out</strong>
+
+
+ <span>Average fund holding time &lt; 10 minutes</span>
+
+
+ </div>
+
+
+ </div>
+
+
+ </div>
+
+
+
+
+
+ <!-- Preserved containers for feature explainability IDs -->
+
+
+ <div id="signals-container" style="display: none;"></div>
+
+
+ <div id="evidence-container" style="display: none;"></div>
+
+
+ </div>
+
+
+
+
+
+ </div>
+
+
+
+
+
+ </div>
+
+
+
+
+
+ <!-- =====================================================================
+
+
+ TAB 1.5: LAYERING TOPOLOGY BREAKDOWN
+
+
+ ===================================================================== -->
+
+
+ <div class="tab-view-container" id="tab-layering">
+
+
+ <div class="layering-view-layout">
+
+
+ <div class="dash-header-strip">
+
+
+ <div class="dash-title-block">
+
+
+ <h2 class="dash-main-heading">Layering Topology &amp; Mule Dispersion Breakdown</h2>
+
+
+ <p class="dash-main-subtext">Multi-tier forensic stratification of fraud funds from victim debit to terminal cashout</p>
+
+
+ </div>
+
+
+ </div>
+
+
+
+
+
+ <div class="layering-stages-grid">
+
+
+ <div class="layer-stage-card layer-card-0">
+
+
+ <div class="layer-stage-badge badge-layer0">Layer 0 | Placement</div>
+
+
+ <div class="layer-stage-amount" id="layer0-stage-amount">₹5,00,000</div>
+
+
+ <div class="layer-stage-title">Victim Source Account</div>
+
+
+ <p class="layer-stage-desc" id="layer0-stage-desc">Direct cyber-fraud transfer from victim account in Dindigul via IMPS / NetBanking.</p>
+
+
+ <div class="layer-stage-stat" id="layer0-stage-stat">1 Node | 100% Inflow Volume</div>
+
+
+ </div>
+
+
+
+
+
+ <div class="layer-stage-card layer-card-1">
+
+
+ <div class="layer-stage-badge badge-layer1">Layer 1 | Mule Splitting</div>
+
+
+ <div class="layer-stage-amount" id="layer1-stage-amount">₹5,00,000</div>
+
+
+ <div class="layer-stage-title">High-Priority Intercept Mules</div>
+
+
+ <p class="layer-stage-desc" id="layer1-stage-desc">Immediate dispersion into 2 dormant digital accounts within 14 minutes of fraud registration.</p>
+
+
+ <div class="layer-stage-stat" id="layer1-stage-stat">2 Nodes | ₹4,12,000 Recoverable</div>
+
+
+ </div>
+
+
+
+
+
+ <div class="layer-stage-card layer-card-2">
+
+
+ <div class="layer-stage-badge badge-layer2">Layer 2 | Secondary Stratification</div>
+
+
+ <div class="layer-stage-amount" id="layer2-stage-amount">₹4,40,000</div>
+
+
+ <div class="layer-stage-title">Secondary Dispersion Transit</div>
+
+
+ <p class="layer-stage-desc" id="layer2-stage-desc">Cross-bank routing to obfuscate beneficiary trails, utilizing UPI and quick payments.</p>
+
+
+ <div class="layer-stage-stat" id="layer2-stage-stat">3 Nodes | High Velocity</div>
+
+
+ </div>
+
+
+
+
+
+ <div class="layer-stage-card layer-card-3">
+
+
+ <div class="layer-stage-badge badge-layer3">Layer 3 | Terminal Extraction</div>
+
+
+ <div class="layer-stage-amount" id="layer3-stage-amount">₹3,90,000</div>
+
+
+ <div class="layer-stage-title">Predictive ATM / Cash-out Nexus</div>
+
+
+ <p class="layer-stage-desc" id="layer3-stage-desc">Identified high-probability cashout kiosks in commercial market corridors.</p>
+
+
+ <div class="layer-stage-stat" id="layer3-stage-stat">4 Hub Outlets | Lead Time 25-45m</div>
+
+
+ </div>
+
+
+ </div>
+
+
+ </div>
+
+
+ </div>
+
+
+
+
+
+ <!-- =====================================================================
+
+
+ TAB 2: PREDICTED CASHOUT & GEOSPATIAL MAP VIEW
+
+
+ ===================================================================== -->
+
+
+ <div class="tab-view-container" id="tab-map-cashout">
+
+
+ 
+
+
+ <!-- Primary Target 4-Tuple Executive Bar (Evaluator #2) -->
+
+
+ <section class="target-tuple-strip" id="target-tuple-strip" style="padding: 0 0 1rem 0;">
+
+
+ <div class="tuple-card">
+
+
+ <div class="tuple-label">1. PREDICTED CASHOUT HUB &amp; CORRIDOR</div>
+
+
+ <div class="tuple-value" id="hud-forecast-hub">Chennai — T. Nagar Commercial Corridor</div>
+
+
+ <div class="tuple-subtext">Geospatial transit nexus (~392 km from origin)</div>
+
+
+ </div>
+
+
+
+
+
+ <div class="tuple-card">
+
+
+ <div class="tuple-label">2. OPERATIONAL INTERCEPT WINDOW</div>
+
+
+ <div class="tuple-value accent-cyan" id="hud-time-window">T + 25 to 45 Minutes</div>
+
+
+ <div class="tuple-subtext"><span class="pulse-indicator"></span> Active Golden Hour Liquidation Window</div>
+
+
+ </div>
+
+
+
+
+
+ <div class="tuple-card">
+
+
+ <div class="tuple-label">3. CASHOUT PROBABILITY RISK</div>
+
+
+ <div class="tuple-value accent-red" id="hud-cashout-risk">89.5% IMMINENT</div>
+
+
+ <div class="tuple-subtext">Calibrated terminal layering index</div>
+
+
+ </div>
+
+
+
+
+
+ <div class="tuple-card">
+
+
+ <div class="tuple-label">4. EMPIRICAL CONFIDENCE SCORE</div>
+
+
+ <div class="tuple-value accent-emerald" id="hud-confidence">86.0% HIGH</div>
+
+
+ <div class="tuple-subtext">Across 85% verified core transaction trail</div>
+
+
+ </div>
+
+
+ </section>
+
+
+
+
+
+ <!-- Advisory Banner -->
+
+
+ <section class="advisory-banner" id="cashout-banner" style="margin-bottom: 1.25rem;">
+
+
+ <div class="advisory-left">
+
+
+ <div class="advisory-icon-badge">
+
+
+ <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+
+
+ <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+
+
+ </svg>
+
+
+ </div>
+
+
+ <div class="advisory-content">
+
+
+ <h3 id="intel-headline">Tactical Advisory: Physical Cash-Out Forecasted at Chennai Metropolitan Transit Hub</h3>
+
+
+ <p id="intel-summary">
+
+
+ Defrauded capital has traversed from Dindigul across 4 layered mule tiers to Chennai. Immediate liaison with nodal bank branches recommended.
+
+
+ </p>
+
+
+ </div>
+
+
+ </div>
+
+
+ <div class="advisory-right">
+
+
+ <span class="advisory-action-tag" id="intel-action-badge">ALERT FIELD UNITS</span>
+
+
+ <span class="advisory-window-tag" id="intel-time-window">Forecast Window: 20 to 40 minutes</span>
+
+
+ </div>
+
+
+ </section>
+
+
+
+
+
+ <!-- Leaflet Map Container -->
+
+
+ <div class="map-view-card">
+
+
+ <div class="map-card-header">
+
+
+ <div style="display: flex; align-items: center; gap: 10px;">
+
+
+ <div style="width: 32px; height: 32px; border-radius: 10px; background: rgba(56, 189, 248, 0.12); border: 1px solid rgba(56, 189, 248, 0.3); display: flex; align-items: center; justify-content: center; color: #0284c7;">
+
+
+ <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+
+
+ <polygon points="1 6 1 22 8 18 16 22 23 18 23 2 16 6 8 2 1 6"></polygon>
+
+
+ <line x1="8" y1="2" x2="8" y2="18"></line>
+
+
+ <line x1="16" y1="6" x2="16" y2="22"></line>
+
+
+ </svg>
+
+
+ </div>
+
+
+ <div>
+
+
+ <h3 style="font-size: 0.92rem; font-weight: 700; color: var(--text-heading); margin: 0;">
+
+
+ Tactical Geospatial Money-Flow Trail &amp; ATM Intercept Points
+
+
+ </h3>
+
+
+ <div style="font-size: 0.70rem; color: #64748b; margin-top: 1px;">
+
+
+ High-Precision Intercept Corridor | Multi-Corridor Geofence Surveillance
+
+
+ </div>
+
+
+ </div>
+
+
+ </div>
+
+
+ <div style="display: flex; gap: 8px; align-items: center; flex-wrap: wrap;">
+
+
+ <!-- Map Style Switcher Pills -->
+
+
+ <div class="map-style-switcher">
+
+
+ <button type="button" class="btn-map-style active" data-map-style="darkmatter" id="map-style-darkmatter">Dark Matter</button>
+
+
+ <button type="button" class="btn-map-style" data-map-style="satellite" id="map-style-satellite">Satellite</button>
+
+
+ <button type="button" class="btn-map-style" data-map-style="voyager" id="map-style-voyager">Streets</button>
+
+
+ <button type="button" class="btn-map-style" data-map-style="positron" id="map-style-positron">Daylight</button>
+
+
+ </div>
+
+
+ <button class="btn btn-secondary" id="btn-toggle-gis-layer" style="display: none;">
+
+
+ <span id="map-active-layer-tag">Dual GIS Layer</span>
+
+
+ </button>
+
+
+ <button class="btn btn-secondary" id="btn-fit-map" style="display: none;">
+
+
+ Fit Trail Bounds
+
+
+ </button>
+
+
+ </div>
+
+
+ </div>
+
+
+
+
+
+ <div class="map-container" style="height: 480px; position: relative;">
+
+
+ <div id="leaflet-map"></div>
+
+
+
+
+
+ <!-- Map Floating Legend Strip -->
+
+
+ <div class="map-legend-floating">
+
+
+ <div class="map-legend-chip">
+
+
+ <span class="legend-ping-dot ping-cyan"></span>
+
+
+ <span>Victim Origin</span>
+
+
+ </div>
+
+
+ <div class="map-legend-chip">
+
+
+ <span class="legend-line-flow"></span>
+
+
+ <span>Money Flow Trail</span>
+
+
+ </div>
+
+
+ <div class="map-legend-chip">
+
+
+ <span class="legend-ping-dot ping-rose"></span>
+
+
+ <span>Predicted Cash-Out Hub</span>
+
+
+ </div>
+
+
+ <div class="map-legend-chip">
+
+
+ <span class="legend-ping-dot ping-emerald"></span>
+
+
+ <span>ATM Intercept Candidates</span>
+
+
+ </div>
+
+
+ </div>
+
+
+
+
+
+ <div class="map-disclaimer-overlay" id="map-layer-indicator">
+
+
+ <span class="live-dot-pulse" style="width: 6px; height: 6px;"></span>
+
+
+ <span>Tactical Dark Matter Active | Corridor Tracked</span>
+
+
+ </div>
+
+
+ </div>
+
+
+ </div>
+
+
+
+
+
+ <!-- Split Ranked Zones & ATM Tables -->
+
+
+ <div class="tables-split-layout" style="margin-top: 1.25rem;">
+
+
+ <!-- Ranked Zones Panel -->
+
+
+ <div class="table-card-separated">
+
+
+ <div class="table-card-header">
+
+
+ <div class="table-title-group">
+
+
+ <span class="table-indicator indicator-cyan"></span>
+
+
+ <h4 style="color: var(--accent-cyan);">Ranked Geographic Withdrawal Zones</h4>
+
+
+ </div>
+
+
+ <span class="table-badge-count">Zones Registry</span>
+
+
+ </div>
+
+
+ <div class="table-scroll-panel" id="scroll-zones-panel">
+
+
+ <table class="data-table" id="table-zones">
+
+
+ <thead>
+
+
+ <tr>
+
+
+ <th>Rank</th>
+
+
+ <th>Zone / Commercial Jurisdiction</th>
+
+
+ <th>Geofence</th>
+
+
+ <th>Probability</th>
+
+
+ <th>Execution Window</th>
+
+
+ </tr>
+
+
+ </thead>
+
+
+ <tbody id="tbody-zones">
+
+
+ <!-- Populated dynamically -->
+
+
+ </tbody>
+
+
+ </table>
+
+
+ </div>
+
+
+ </div>
+
+
+
+
+
+ <!-- ATM Candidates Panel -->
+
+
+ <div class="table-card-separated">
+
+
+ <div class="table-card-header">
+
+
+ <div class="table-title-group">
+
+
+ <span class="table-indicator indicator-emerald"></span>
+
+
+ <h4 style="color: #34d399;">Illustrative ATM Candidate Points (Decision Support)</h4>
+
+
+ </div>
+
+
+ <span class="table-badge-count">Terminals Registry</span>
+
+
+ </div>
+
+
+ <div class="table-scroll-panel" id="scroll-atms-panel">
+
+
+ <table class="data-table" id="table-atms">
+
+
+ <thead>
+
+
+ <tr>
+
+
+ <th>Terminal ID</th>
+
+
+ <th>Bank &amp; Branch Hub</th>
+
+
+ <th>Confidence</th>
+
+
+ <th>Estimated Window</th>
+
+
+ <th>Navigation</th>
+
+
+ </tr>
+
+
+ </thead>
+
+
+ <tbody id="tbody-atms">
+
+
+ <!-- Populated dynamically -->
+
+
+ </tbody>
+
+
+ </table>
+
+
+ </div>
+
+
+ </div>
+
+
+ </div>
+
+
+
+
+
+ </div>
+
+
+
+
+
+ <!-- =====================================================================
+
+
+ TAB 3: RISK ANALYSIS & MODEL EXPLAINABILITY
+
+
+ ===================================================================== -->
+
+
+ <div class="tab-view-container" id="tab-risk-analysis">
+
+
+ 
+
+
+ <!-- Risk Cards Grid -->
+
+
+ <div class="risk-grid" style="margin-bottom: 1.25rem;">
+
+
+ <!-- Fraud Risk -->
+
+
+ <div class="risk-card card-fraud">
+
+
+ <div class="risk-card-header">
+
+
+ <span class="risk-card-title">Fraud Risk Probability</span>
+
+
+ <span class="risk-badge badge-critical" id="badge-fraud-level">CRITICAL</span>
+
+
+ </div>
+
+
+ <div class="risk-score-display">
+
+
+ <span class="risk-number" id="val-fraud-risk">94.2</span>
+
+
+ <span class="risk-percent">%</span>
+
+
+ </div>
+
+
+ <div class="meter-track">
+
+
+ <div class="meter-fill fill-critical" id="meter-fraud-risk" style="width: 94.2%;"></div>
+
+
+ </div>
+
+
+ <div class="risk-card-footer">
+
+
+ <span>Layering Index</span>
+
+
+ <span id="lbl-fraud-cadence" style="font-weight: 600; color: #f87171;">Extreme Velocity</span>
+
+
+ </div>
+
+
+ </div>
+
+
+
+
+
+ <!-- Digital Flow Risk -->
+
+
+ <div class="risk-card card-digital">
+
+
+ <div class="risk-card-header">
+
+
+ <span class="risk-card-title">Digital Trail Retainment</span>
+
+
+ <span class="risk-badge badge-high" id="badge-digital-level">ELEVATED</span>
+
+
+ </div>
+
+
+ <div class="risk-score-display">
+
+
+ <span class="risk-number" id="val-digital-risk">52.8</span>
+
+
+ <span class="risk-percent">%</span>
+
+
+ </div>
+
+
+ <div class="meter-track">
+
+
+ <div class="meter-fill fill-digital" id="meter-digital-risk" style="width: 52.8%;"></div>
+
+
+ </div>
+
+
+ <div class="risk-card-footer">
+
+
+ <span>Electronic Holding</span>
+
+
+ <span id="lbl-digital-status" style="font-weight: 600; color: #38bdf8;">Intermediate Transit</span>
+
+
+ </div>
+
+
+ </div>
+
+
+
+
+
+ <!-- Cashout Risk -->
+
+
+ <div class="risk-card card-cashout">
+
+
+ <div class="risk-card-header">
+
+
+ <span class="risk-card-title">Cash-Out Imminence</span>
+
+
+ <span class="risk-badge badge-critical" id="badge-cashout-level">IMMINENT</span>
+
+
+ </div>
+
+
+ <div class="risk-score-display">
+
+
+ <span class="risk-number" id="val-cashout-risk">89.5</span>
+
+
+ <span class="risk-percent">%</span>
+
+
+ </div>
+
+
+ <div class="meter-track">
+
+
+ <div class="meter-fill fill-high" id="meter-cashout-risk" style="width: 89.5%;"></div>
+
+
+ </div>
+
+
+ <div class="risk-card-footer">
+
+
+ <span>Terminal Liquidation</span>
+
+
+ <span id="lbl-cashout-lead" style="font-weight: 600; color: #fb923c;">Active Preparation</span>
+
+
+ </div>
+
+
+ </div>
+
+
+
+
+
+ <!-- Confidence -->
+
+
+ <div class="risk-card card-confidence">
+
+
+ <div class="risk-card-header">
+
+
+ <span class="risk-card-title">Analytical Confidence</span>
+
+
+ <span class="risk-badge badge-low" id="badge-conf-level">HIGH CONFIDENCE</span>
+
+
+ </div>
+
+
+ <div class="risk-score-display">
+
+
+ <span class="risk-number" id="val-confidence">86.0</span>
+
+
+ <span class="risk-percent">%</span>
+
+
+ </div>
+
+
+ <div class="meter-track">
+
+
+ <div class="meter-fill fill-emerald" id="meter-confidence" style="width: 86%;"></div>
+
+
+ </div>
+
+
+ <div class="risk-card-footer">
+
+
+ <span>Trail Completeness</span>
+
+
+ <span id="lbl-conf-coverage" style="font-weight: 600; color: #34d399;">85% Coverage</span>
+
+
+ </div>
+
+
+ </div>
+
+
+ </div>
+
+
+
+
+
+ <!-- Deep Behavioral Signals and Explainability Stack -->
+
+
+ <div class="details-grid">
+
+
+ <div class="panel-card-lg">
+
+
+ <h3>
+
+
+ <span>Derived Behavioral Signals</span>
+
+
+ <span style="font-size: 0.7rem; color: var(--text-muted); font-weight: 500;">Extracted directly from transaction stream</span>
+
+
+ </h3>
+
+
+ <div class="signals-list" id="signals-container-visible">
+
+
+ <!-- Populated via JS -->
+
+
+ </div>
+
+
+ </div>
+
+
+
+
+
+ <div class="panel-card-lg">
+
+
+ <h3>
+
+
+ <span>Investigative Findings &amp; Evidence Correlation</span>
+
+
+ <span style="font-size: 0.7rem; color: var(--accent-cyan); font-weight: 600;">Explainable AI Rationale</span>
+
+
+ </h3>
+
+
+ <div class="evidence-stack" id="evidence-container-visible">
+
+
+ <!-- Populated via JS -->
+
+
+ </div>
+
+
+ </div>
+
+
+ </div>
+
+
+
+
+
+ </div>
+
+
+
+
+
+ <!-- =====================================================================
+
+
+ TAB 4: REPORTS & GROUND-TRUTH AUDIT
+
+
+ ===================================================================== -->
+
+
+       <!-- =====================================================================
+
+
+           TAB 5: OFFICIAL POLICE CASE DOSSIER & COURT EVIDENCE
+
+
+           ===================================================================== -->
+
+
+      <div class="tab-view-container" id="tab-reports">
+
+
+        <div class="police-dossier-card">
+
+
+          
+
+
+          <!-- Dossier Government Header -->
+
+
+          <div class="dossier-emblem-header">
+
+
+            <div class="dossier-gov-title-group">
+
+
+              <span class="dossier-state-seal">STATE CYBER CRIME INVESTIGATION CELL</span>
+
+
+              <h2>Official Police Case Dossier &amp; Section 65B Evidence Report</h2>
+
+
+              <div class="dossier-statutory-ref">
+
+
+                Statutory Power: Section 102 Code of Criminal Procedure (CrPC) / Section 106 Bharatiya Nagarik Suraksha Sanhita (BNSS)
+
+
+              </div>
+
+
+            </div>
+
+
+            <div class="dossier-header-actions">
+
+
+              <button type="button" class="btn btn-secondary" id="btn-record-outcome" style="font-size: 0.74rem;">
+
+
+                Record Verified Outcome
+
+
+              </button>
+
+
+              <button type="button" class="btn btn-primary" id="btn-print-case-dossier" style="font-size: 0.74rem; background: #0284c7; border-color: #38bdf8;">
+
+
+                Print / Save PDF Dossier
+
+
+              </button>
+
+
+            </div>
+
+
+          </div>
+
+
+
+
+
+          <!-- Formal Case Docket Summary Grid -->
+
+
+          <div class="dossier-meta-grid">
+
+
+            <div class="dossier-meta-item">
+
+
+              <span class="dossier-meta-lbl">NCRP COMPLAINT NO.</span>
+
+
+              <strong class="dossier-meta-val" id="report-complaint-no">NCRP-2026-TN-981240</strong>
+
+
+            </div>
+
+
+            <div class="dossier-meta-item">
+
+
+              <span class="dossier-meta-lbl">VICTIM / COMPLAINANT</span>
+
+
+              <strong class="dossier-meta-val" id="report-victim-name">A. Murugesan (Dindigul)</strong>
+
+
+            </div>
+
+
+            <div class="dossier-meta-item">
+
+
+              <span class="dossier-meta-lbl">INVESTIGATING OFFICER</span>
+
+
+              <strong class="dossier-meta-val" id="report-officer-name">Inspector A. Murthy (TN-CCB-4402)</strong>
+
+
+            </div>
+
+
+            <div class="dossier-meta-item">
+
+
+              <span class="dossier-meta-lbl">FILING INCIDENT TIMESTAMP</span>
+
+
+              <strong class="dossier-meta-val" id="report-case-date">12-Sep-2026 10:42:15 IST</strong>
+
+
+            </div>
+
+
+          </div>
+
+
+
+
+
+          <!-- Financial Recovery Tally Banner -->
+
+
+          <div class="dossier-financial-banner">
+
+
+            <div class="dossier-fin-col">
+
+
+              <span class="dossier-fin-lbl">TOTAL DEFRAUDED EXPOSURE</span>
+
+
+              <strong class="dossier-fin-val text-red" id="report-loss-amount">₹5,00,000</strong>
+
+
+              <span class="dossier-fin-sub">100% Inflow Tracked Across 4 Hops</span>
+
+
+            </div>
+
+
+            <div class="dossier-fin-col">
+
+
+              <span class="dossier-fin-lbl">FUNDS SECURED &amp; LIEN-MARKED</span>
+
+
+              <strong class="dossier-fin-val text-green" id="report-saved-amount">₹4,75,000 (95.0%)</strong>
+
+
+              <span class="dossier-fin-sub">Under Section 102 CrPC Statutory Hold</span>
+
+
+            </div>
+
+
+            <div class="dossier-fin-col">
+
+
+              <span class="dossier-fin-lbl">TERMINAL CASHOUT STATUS</span>
+
+
+              <strong class="dossier-fin-val text-cyan">INTERCEPTED</strong>
+
+
+              <span class="dossier-fin-sub">Pre-ATM Liquidation at Chennai Corridor</span>
+
+
+            </div>
+
+
+          </div>
+
+
+
+
+
+          <!-- Actionable Mule Registry Table -->
+
+
+          <div class="dossier-section-title">
+
+
+            <h4>Verified Downstream Mule Layering Registry</h4>
+
+
+            <button type="button" class="btn btn-secondary" id="btn-export-dossier-notice" style="font-size: 0.72rem; padding: 3px 8px;">
+
+
+              Export Sec 102 Bank Notice
+
+
+            </button>
+
+
+          </div>
+
+
+
+
+
+          <div class="dossier-table-wrap">
+
+
+            <table class="dossier-data-table">
+
+
+              <thead>
+
+
+                <tr>
+
+
+                  <th>Layer / Hop</th>
+
+
+                  <th>Beneficiary Account</th>
+
+
+                  <th>Designated Bank &amp; IFSC</th>
+
+
+                  <th>Amount</th>
+
+
+                  <th>Transit Window</th>
+
+
+                  <th>Statutory Enforcement Action</th>
+
+
+                </tr>
+
+
+              </thead>
+
+
+              <tbody id="report-mules-table-body">
+
+
+                <tr>
+
+
+                  <td><span class="dossier-badge-hop">Layer 1</span></td>
+
+
+                  <td><code>ACC-MULE-A-8120</code></td>
+
+
+                  <td>HDFC Bank | HDFC0004820</td>
+
+
+                  <td><strong>₹2,40,000</strong></td>
+
+
+                  <td>T + 14 Mins</td>
+
+
+                  <td><span class="dossier-badge-ok">[OK] Section 102 Statutory Lien</span></td>
+
+
+                </tr>
+
+
+                <tr>
+
+
+                  <td><span class="dossier-badge-hop">Layer 1</span></td>
+
+
+                  <td><code>ACC-MULE-B-3319</code></td>
+
+
+                  <td>ICICI Bank | ICIC0007190</td>
+
+
+                  <td><strong>₹2,60,000</strong></td>
+
+
+                  <td>T + 18 Mins</td>
+
+
+                  <td><span class="dossier-badge-ok">[OK] Section 102 Statutory Lien</span></td>
+
+
+                </tr>
+
+
+                <tr>
+
+
+                  <td><span class="dossier-badge-hop">Layer 2</span></td>
+
+
+                  <td><code>ACC-MULE-C-7201</code></td>
+
+
+                  <td>State Bank of India | SBIN0001234</td>
+
+
+                  <td><strong>₹1,80,000</strong></td>
+
+
+                  <td>T + 28 Mins</td>
+
+
+                  <td><span class="dossier-badge-ok">[OK] Core Banking Lien Applied</span></td>
+
+
+                </tr>
+
+
+                <tr>
+
+
+                  <td><span class="dossier-badge-hop terminal-hop">Cash-Out</span></td>
+
+
+                  <td><code>ACC-MULE-D-5104</code></td>
+
+
+                  <td>Axis Bank | UTIB0000987</td>
+
+
+                  <td><strong>₹85,000</strong></td>
+
+
+                  <td>T + 38 Mins</td>
+
+
+                  <td><span class="dossier-badge-ok">[OK] ATM Card Intercept Active</span></td>
+
+
+                </tr>
+
+
+              </tbody>
+
+
+            </table>
+
+
+          </div>
+
+
+
+
+
+          <!-- Section 65B Indian Evidence Act Forensic Certificate Card -->
+
+
+          <div class="dossier-cert-box">
+
+
+            <div class="cert-box-header">
+
+
+              <span class="cert-badge-65b">CERTIFICATE OF ELECTRONIC EVIDENCE (SECTION 65B IEA / SEC 63 BSA)</span>
+
+
+              <span class="cert-status-ok">[OK] Cryptographically Anchored</span>
+
+
+            </div>
+
+
+            <p class="cert-body-text">
+
+
+              This electronic document certifies that all transaction telemetry, multi-hop routing topologies, AI behavioral predictions, and automated bank lien directives in case <strong id="cert-case-id">CASE-DIN-2026-001</strong> were generated systematically in the ordinary course of official cyber surveillance duties under Section 65B of the Indian Evidence Act. The record has been immutably hashed and timestamped onto the decentralized consortium forensic ledger.
+
+
+            </p>
+
+
+            <div class="cert-hash-row">
+
+
+              <span>LEDGER ROOT HASH:</span>
+
+
+              <code id="report-blockchain-hash">0036775c9e8cba695a861716dd187385bd11d18e476b5d05a893ef2aa16c38f4</code>
+
+
+            </div>
+
+
+            <div class="cert-sign-row">
+
+
+              <span>AUTHORIZED DIGITAL SIGNATURE:</span>
+
+
+              <strong>[DIGITALLY CERTIFIED - STATE CRIME RECORDS BUREAU NODAL DESK]</strong>
+
+
+            </div>
+
+
+          </div>
+
+
+
+
+
+        </div>
+
+
+      </div>
+
+
+
+
+
+
+
+
+ 
+  </main>
+
+
+
+
+
+ </div>
+
+
+
+
+
+ <!-- =====================================================================
+
+
+ ALL 8 PRESERVED MODALS
+
+
+ ===================================================================== -->
+
+
+
+
+
+ <!-- MODAL 1: Officer Authentication -->
+
+
+ <div class="modal-backdrop" id="modal-login">
+
+
+ <div class="modal-box" style="max-width: 440px;">
+
+
+ <div class="modal-header">
+
+
+ <h2>Authorized Officer Authentication</h2>
+
+
+ <button class="modal-close" id="close-modal-login">&times;</button>
+
+
+ </div>
+
+
+ <p style="font-size: 0.78rem; color: var(--text-muted); margin-bottom: 1rem;">
+
+
+ Authenticate with law enforcement forensic credentials to access case records, ingest bank events, and verify field outcomes.
+
+
+ </p>
+
+
+ <form id="form-login">
+
+
+ <div class="form-group">
+
+
+ <label for="login-username">Officer ID / Username</label>
+
+
+ <input type="text" id="login-username" class="form-input" required value="officer.murthy" autocomplete="username">
+
+
+ </div>
+
+
+ <div class="form-group">
+
+
+ <label for="login-password">Passphrase / Security Key</label>
+
+
+ <input type="password" id="login-password" class="form-input" required value="TamilNadu@2026" autocomplete="current-password">
+
+
+ </div>
+
+
+
+
+
+ <div style="margin: 0.85rem 0; padding: 0.65rem; background: rgba(255, 255, 255, 0.04); border: 1px solid var(--border-subtle); border-radius: 8px;">
+
+
+ <div style="font-size: 0.68rem; font-weight: 700; color: var(--text-muted); text-transform: uppercase; margin-bottom: 0.35rem;">Demo Accounts Quick Select:</div>
+
+
+ <div style="display: flex; gap: 0.5rem;">
+
+
+ <button type="button" class="btn btn-secondary" id="preset-murthy" style="flex: 1; font-size: 0.7rem; padding: 4px 6px;">
+
+
+ Inspector Murthy
+
+
+ </button>
+
+
+ <button type="button" class="btn btn-secondary" id="preset-admin" style="flex: 1; font-size: 0.7rem; padding: 4px 6px;">
+
+
+ DySP Varma (Admin)
+
+
+ </button>
+
+
+ </div>
+
+
+ </div>
+
+
+
+
+
+ <div style="display: flex; justify-content: flex-end; gap: 0.75rem; margin-top: 1.5rem;">
+
+
+ <button type="button" class="btn btn-secondary" id="btn-cancel-login">Cancel</button>
+
+
+ <button type="submit" class="btn btn-primary">Authenticate Officer</button>
+
+
+ </div>
+
+
+ </form>
+
+
+ </div>
+
+
+ </div>
+
+
+
+
+
+ <!-- MODAL 2: Ingest Transaction Event -->
+
+
+ <div class="modal-backdrop" id="modal-add-tx">
+
+
+ <div class="modal-box">
+
+
+ <div class="modal-header">
+
+
+ <h2>Ingest Banking Transaction Event</h2>
+
+
+ <button class="modal-close" id="close-modal-add-tx">&times;</button>
+
+
+ </div>
+
+
+ <form id="form-add-tx">
+
+
+ <div class="form-group">
+
+
+ <label for="tx-source">Source Account Identifier</label>
+
+
+ <input type="text" id="tx-source" class="form-input" required value="ACC-MULE-D-5104">
+
+
+ </div>
+
+
+ <div class="form-group">
+
+
+ <label for="tx-dest">Beneficiary / Destination Account</label>
+
+
+ <input type="text" id="tx-dest" class="form-input" required value="ACC-MULE-E-9912">
+
+
+ </div>
+
+
+ <div class="form-group">
+
+
+ <label for="tx-amount">Transaction Amount (INR)</label>
+
+
+ <input type="number" id="tx-amount" class="form-input" required value="390000" step="5000">
+
+
+ </div>
+
+
+ <div class="form-group">
+
+
+ <label for="tx-channel">Settlement Channel</label>
+
+
+ <select id="tx-channel" class="form-select">
+
+
+ <option value="IMPS">IMPS (Immediate Payment Service)</option>
+
+
+ <option value="UPI">UPI (Unified Payments Interface)</option>
+
+
+ <option value="NEFT">NEFT (National Electronic Funds Transfer)</option>
+
+
+ <option value="RTGS">RTGS</option>
+
+
+ <option value="ATM">ATM Withdrawal Terminal</option>
+
+
+ </select>
+
+
+ </div>
+
+
+ <div class="form-group">
+
+
+ <label for="tx-dest-city">Destination Transit Hub / Branch Location</label>
+
+
+ <input type="text" id="tx-dest-city" class="form-input" value="Chennai">
+
+
+ </div>
+
+
+ <div style="display: flex; justify-content: flex-end; gap: 0.75rem; margin-top: 1.5rem;">
+
+
+ <button type="button" class="btn btn-secondary" id="btn-cancel-add-tx">Cancel</button>
+
+
+ <button type="submit" class="btn btn-primary">Ingest &amp; Recalculate Flow</button>
+
+
+ </div>
+
+
+ </form>
+
+
+ </div>
+
+
+ </div>
+
+
+
+
+
+ <!-- MODAL 3: Simulated Core Banking Connectors -->
+
+
+ <div class="modal-backdrop" id="modal-connectors">
+
+
+ <div class="modal-box">
+
+
+ <div class="modal-header">
+
+
+ <h2>Simulated Core Banking &amp; Cyber Reporting Connectors</h2>
+
+
+ <button class="modal-close" id="close-modal-connectors">&times;</button>
+
+
+ </div>
+
+
+ <p style="font-size: 0.78rem; color: var(--text-muted); margin-bottom: 1rem;">
+
+
+ FraudFlow Intelligence implements an idempotent ingestion boundary with SHA-256 payload hashing and duplicate event prevention.
+
+
+ </p>
+
+
+ <div id="connectors-list"></div>
+
+
+ <div style="margin-top: 1.25rem; padding-top: 1rem; border-top: 1px solid var(--border-subtle);">
+
+
+ <h4 style="font-size: 0.8rem; color: var(--accent-cyan); margin-bottom: 0.4rem; font-weight: 700;">Test Boundary Idempotency</h4>
+
+
+ <button class="btn btn-secondary" id="btn-fire-simulated-event" style="width: 100%; font-size: 0.78rem;">
+
+
+ Transmit Event from MOCK-BANK-01
+
+
+ </button>
+
+
+ </div>
+
+
+ </div>
+
+
+ </div>
+
+
+
+
+
+ <!-- MODAL 4: Governance & Security Architecture -->
+
+
+ <div class="modal-backdrop" id="modal-gov">
+
+
+ <div class="modal-box" style="max-width: 640px;">
+
+
+ <div class="modal-header">
+
+
+ <h2>Governance, Legal Compliance &amp; Security Architecture</h2>
+
+
+ <button class="modal-close" id="close-modal-gov">&times;</button>
+
+
+ </div>
+
+
+ <div style="font-size: 0.8rem; color: var(--text-body); line-height: 1.6; display: flex; flex-direction: column; gap: 0.85rem;">
+
+
+ <div>
+
+
+ <strong style="color: var(--accent-cyan);">1. Institutional Positioning:</strong>
+
+
+ Functional proof-of-concept for SIH problem statement SIH26184. Operates on synthetic transaction data and illustrative ATM candidates.
+
+
+ </div>
+
+
+ <div>
+
+
+ <strong style="color: var(--accent-cyan);">2. Non-Autonomous Decision Support:</strong>
+
+
+ Provides ranked probable candidate zones to empower investigative decision-making.
+
+
+ </div>
+
+
+ </div>
+
+
+ <div style="margin-top: 1.25rem; display: flex; justify-content: flex-end;">
+
+
+ <button class="btn btn-secondary" id="close-modal-gov-btn">Close</button>
+
+
+ </div>
+
+
+ </div>
+
+
+ </div>
+
+
+
+
+
+ <!-- MODAL 5: Record Field Outcome -->
+
+
+ <div class="modal-backdrop" id="modal-outcome">
+
+
+ <div class="modal-box">
+
+
+ <div class="modal-header">
+
+
+ <h2>Record Verified Ground-Truth Outcome</h2>
+
+
+ <button class="modal-close" id="close-modal-outcome">&times;</button>
+
+
+ </div>
+
+
+ <form id="form-record-outcome">
+
+
+ <div class="form-group">
+
+
+ <label for="outcome-type">Outcome Classification</label>
+
+
+ <select id="outcome-type" class="form-select">
+
+
+ <option value="CASHOUT_CONFIRMED_AT_ZONE">Physical Cash-Out Intercepted at Predicted Zone</option>
+
+
+ <option value="FUNDS_FROZEN_DIGITALLY">Funds Successfully Lien-Marked in Transit</option>
+
+
+ <option value="ATM_WITHDRAWAL_MISSED">ATM Withdrawal Occurred Prior to Dispatch</option>
+
+
+ <option value="LEGITIMATE_TRANSACTION">Confirmed False Positive / Legitimate Commercial Transfer</option>
+
+
+ </select>
+
+
+ </div>
+
+
+ <div class="form-group">
+
+
+ <label for="outcome-location">Confirmed Field Location</label>
+
+
+ <input type="text" id="outcome-location" class="form-input" value="T. Nagar Commercial Hub, Chennai">
+
+
+ </div>
+
+
+ <div class="form-group">
+
+
+ <label for="outcome-recovered">Recovered Amount (INR)</label>
+
+
+ <input type="number" id="outcome-recovered" class="form-input" value="420000">
+
+
+ </div>
+
+
+ <div class="form-group">
+
+
+ <label for="outcome-notes">Investigator Field Notes</label>
+
+
+ <textarea id="outcome-notes" class="form-input" rows="3" placeholder="Officer forensic observation report..."></textarea>
+
+
+ </div>
+
+
+ <div style="display: flex; justify-content: flex-end; gap: 0.75rem; margin-top: 1.5rem;">
+
+
+ <button type="button" class="btn btn-secondary" id="btn-cancel-outcome">Cancel</button>
+
+
+ <button type="submit" class="btn btn-primary">Commit Ground-Truth Record</button>
+
+
+ </div>
+
+
+ </form>
+
+
+ </div>
+
+
+ </div>
+
+
+
+
+
+ <!-- MODAL 6: Forensic Blockchain Explorer (Section 65B Indian Evidence Act) -->
+
+
+ <div class="modal-backdrop" id="modal-blockchain">
+
+
+ <div class="modal-box" style="max-width: 860px; width: 95%; max-height: 90vh; display: flex; flex-direction: column;">
+
+
+ <div class="modal-header">
+
+
+ <div>
+
+
+ <h2>Forensic Evidence Blockchain Explorer</h2>
+
+
+ <div style="font-size: 0.73rem; color: var(--text-muted); margin-top: 2px;">
+
+
+ Statutory Chain of Custody (Section 65B Indian Evidence Act &amp; Section 91 CrPC)
+
+
+ </div>
+
+
+ </div>
+
+
+ <button class="modal-close" id="close-modal-blockchain">&times;</button>
+
+
+ </div>
+
+
+
+
+
+ <!-- Blockchain Status Banner -->
+
+
+ <div id="bc-status-banner" class="bc-status-banner bc-verified" style="margin-bottom: 1rem;">
+
+
+ <div style="display: flex; justify-content: space-between; align-items: center;">
+
+
+ <div>
+
+
+ <strong id="bc-status-title" style="font-size: 0.85rem; color: #34d399;">Cryptographic Chain Integrity: 100% VERIFIED</strong>
+
+
+ <div id="bc-status-subtitle" style="font-size: 0.72rem; color: #cbd5e1; margin-top: 2px;">
+
+
+ Complies with Section 65B Indian Evidence Act. All block header hashes valid.
+
+
+ </div>
+
+
+ </div>
+
+
+ <span class="badge-official" id="bc-badge-compliance" style="background: rgba(52, 211, 153, 0.2); color: #34d399; border: 1px solid rgba(52, 211, 153, 0.4);">
+
+
+ SEC 65B CERTIFIED
+
+
+ </span>
+
+
+ </div>
+
+
+ </div>
+
+
+
+
+
+ <!-- Actions -->
+
+
+ <div style="display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 1rem; padding-bottom: 0.75rem; border-bottom: 1px solid var(--border-subtle);">
+
+
+ <button class="btn btn-primary" id="btn-verify-bc" style="font-size: 0.74rem; padding: 5px 12px;">
+
+
+ Verify Ledger Integrity
+
+
+ </button>
+
+
+ <button class="btn btn-secondary" id="btn-open-freeze" style="font-size: 0.74rem; padding: 5px 12px; border-color: rgba(168, 85, 247, 0.5); color: #d8b4fe;">
+
+
+ Issue On-Chain Lien Directive (CrPC 91/102)
+
+
+ </button>
+
+
+ <button class="btn btn-secondary" id="btn-simulate-tamper-bc" style="font-size: 0.74rem; padding: 5px 12px; border-color: #f59e0b; color: #fbbf24;">
+
+
+ Simulate Record Tampering
+
+
+ </button>
+
+
+ <button class="btn btn-secondary" id="btn-repair-bc" style="font-size: 0.74rem; padding: 5px 12px; border-color: #10b981; color: #34d399;">
+
+
+ Restore Cryptographic State
+
+
+ </button>
+
+
+ </div>
+
+
+
+
+
+ <!-- Blocks List -->
+
+
+ <div id="bc-blocks-list" style="overflow-y: auto; flex: 1; padding-right: 0.5rem; display: flex; flex-direction: column; gap: 0.85rem;"></div>
+
+
+ </div>
+
+
+ </div>
+
+
+
+
+
+ <!-- MODAL 7: Mint On-Chain Section 91 CrPC Freeze Directive -->
+
+
+ <div class="modal-backdrop" id="modal-freeze">
+
+
+ <div class="modal-box" style="max-width: 520px;">
+
+
+ <div class="modal-header">
+
+
+ <div>
+
+
+ <h2>Issue On-Chain Inter-Bank Lien Directive</h2>
+
+
+ <div style="font-size: 0.72rem; color: var(--text-muted); margin-top: 2px;">
+
+
+ Statutory Power: Section 91 &amp; 102 Code of Criminal Procedure (CrPC) / Sec 94 BNSS
+
+
+ </div>
+
+
+ </div>
+
+
+ <button class="modal-close" id="close-modal-freeze">&times;</button>
+
+
+ </div>
+
+
+ <form id="form-freeze-directive">
+
+
+ <div class="form-group">
+
+
+ <label for="freeze-target-acc">Target Beneficiary / Mule Account Identifier</label>
+
+
+ <input type="text" id="freeze-target-acc" class="form-input" required value="ACC-MULE-D-5104">
+
+
+ </div>
+
+
+ <div class="form-group">
+
+
+ <label for="freeze-target-bank">Designated Nodal Financial Institution</label>
+
+
+ <select id="freeze-target-bank" class="form-select">
+
+
+ <option value="STATE_BANK_OF_INDIA">State Bank of India (SBI Nodal Desk)</option>
+
+
+ <option value="HDFC_BANK_NODAL">HDFC Bank (Cyber Financial Cell)</option>
+
+
+ <option value="ICICI_BANK_FRAUD_DESK">ICICI Bank (Fraud Operations)</option>
+
+
+ <option value="PUNJAB_NATIONAL_BANK">Punjab National Bank</option>
+
+
+ <option value="AXIS_BANK_NODAL">Axis Bank</option>
+
+
+ <option value="NATIONAL_PAYMENTS_CORP">NPCI / National Financial Switch (ATM Lock)</option>
+
+
+ </select>
+
+
+ </div>
+
+
+ <div class="form-group">
+
+
+ <label for="freeze-amount">Statutory Lien Amount (INR)</label>
+
+
+ <input type="number" id="freeze-amount" class="form-input" required value="420000" step="5000">
+
+
+ </div>
+
+
+ <div class="form-group">
+
+
+ <label for="freeze-justification">Investigative Justification &amp; Probable Cause</label>
+
+
+ <textarea id="freeze-justification" class="form-input" rows="3" required>High-probability physical cash-out forecasted within 20 to 40 minutes at Chennai transit corridor.</textarea>
+
+
+ </div>
+
+
+ <div style="display: flex; justify-content: flex-end; gap: 0.75rem; margin-top: 1.5rem;">
+
+
+ <button type="button" class="btn btn-secondary" id="btn-cancel-freeze">Cancel</button>
+
+
+ <button type="submit" class="btn btn-primary">Mint Directive Block &amp; Broadcast</button>
+
+
+ </div>
+
+
+ </form>
+
+
+ </div>
+
+
+ </div>
+
+
+
+
+
+
+
+
+ <!-- MODAL 9: Sec 102 CrPC Inter-Bank Lien Dispatch Progress Modal -->
+
+
+ <div class="modal-backdrop" id="modal-freeze-blast">
+
+
+ <div class="modal-box" style="max-width: 580px;">
+
+
+ <div class="modal-header">
+
+
+ <div style="display: flex; align-items: center; gap: 8px;">
+
+
+ <span class="live-dot-pulse"></span>
+
+
+ <h2> Sec 102 CrPC Inter-Bank Lien Dispatch</h2>
+
+
+ </div>
+
+
+ <button class="modal-close" id="close-modal-freeze-blast">&times;</button>
+
+
+ </div>
+
+
+ <div class="modal-body" style="padding: 1.25rem;">
+
+
+ <div style="font-size: 0.76rem; color: var(--text-muted); margin-bottom: 1rem;">
+
+
+ Statutory Emergency Action: Section 102 Code of Criminal Procedure (CrPC) / Section 106 BNSS. Dispatching simultaneous lien-mark directives across all identified downstream bank accounts.
+
+
+ </div>
+
+
+
+
+
+ <div class="blast-summary-banner">
+
+
+ <div class="blast-sum-col">
+
+
+ <span class="blast-sum-label">TOTAL CASE EXPOSURE</span>
+
+
+ <strong class="blast-sum-val" id="blast-total-exposure">₹5,00,000</strong>
+
+
+ </div>
+
+
+ <div class="blast-sum-col">
+
+
+ <span class="blast-sum-label">FUNDS SECURED &amp; LIEN-MARKED</span>
+
+
+ <strong class="blast-sum-val val-green" id="blast-funds-secured">₹0 (0%)</strong>
+
+
+ </div>
+
+
+ <div class="blast-sum-col">
+
+
+ <span class="blast-sum-label">STATUS</span>
+
+
+ <span class="blast-badge-live" id="blast-dispatch-status">STANDBY</span>
+
+
+ </div>
+
+
+ </div>
+
+
+
+
+
+ <div class="blast-progress-list" id="blast-progress-list" style="margin: 1.2rem 0; display: flex; flex-direction: column; gap: 0.65rem; max-height: 220px; overflow-y: auto;">
+
+
+ <!-- Populated live with bank API status rows -->
+
+
+ </div>
+
+
+
+
+
+ <div class="blast-blockchain-proof" id="blast-blockchain-proof" style="display: none; background: rgba(16, 185, 129, 0.08); border: 1px solid rgba(16, 185, 129, 0.3); border-radius: 6px; padding: 10px; margin-top: 0.75rem;">
+
+
+ <div style="display: flex; align-items: center; gap: 6px; color: #10b981; font-weight: 600; font-size: 0.78rem;">
+
+
+ <span>[OK] Forensic Chain of Custody Confirmed (Section 65B IEA)</span>
+
+
+ </div>
+
+
+ <div id="blast-proof-hash" style="font-family: monospace; font-size: 0.7rem; color: var(--text-muted); margin-top: 4px; word-break: break-all;">
+
+
+ BLOCK #10 | HASH: 0000e47b8c...
+
+
+ </div>
+
+
+ </div>
+
+
+ </div>
+
+
+ <div class="modal-footer" style="display: flex; justify-content: space-between; align-items: center; padding: 1rem 1.25rem; border-top: 1px solid var(--border-color);">
+
+
+ <button type="button" class="btn btn-secondary" id="btn-download-blast-notice" style="font-size: 0.76rem;">
+
+
+ Export Sec 102 Legal Notice (PDF)
+
+
+ </button>
+
+
+ <button type="button" class="btn btn-primary" id="btn-done-freeze-blast" style="font-size: 0.76rem;">
+
+
+ Close &amp; Update Intelligence Deck
+
+
+ </button>
+
+
+ </div>
+
+
+ </div>
+
+
+ </div>
+
+
+
+
+
+ <!-- MODAL 8: Model Benchmarking Matrix (Evaluator #5) -->
+
+
+ <div class="modal-backdrop" id="modal-benchmarks">
+
+
+ <div class="modal-box" style="max-width: 880px;">
+
+
+ <div class="modal-header">
+
+
+ <h2>AI Model Comparison &amp; Accuracy</h2>
+
+
+ <button class="modal-close" id="close-modal-benchmarks">&times;</button>
+
+
+ </div>
+
+
+ <div style="padding: 10px 0;">
+
+
+ <p style="font-size: 0.8rem; color: var(--text-muted); margin-bottom: 1rem;">
+
+
+ Comparison of our active <strong>Random Forest AI Model</strong> against alternative algorithms to prove accuracy and speed.
+
+
+ </p>
+
+
+ <div style="overflow-x: auto;">
+
+
+ <table class="data-table">
+
+
+ <thead>
+
+
+ <tr>
+
+
+ <th>Model Architecture</th>
+
+
+ <th>Accuracy (R²)</th>
+
+
+ <th>Speed (Latency)</th>
+
+
+ <th>Precision</th>
+
+
+ <th>Explainability</th>
+
+
+ <th>Status</th>
+
+
+ </tr>
+
+
+ </thead>
+
+
+ <tbody id="benchmarks-table-body"></tbody>
+
+
+ </table>
+
+
+ </div>
+
+
+ </div>
+
+
+ <div style="display: flex; justify-content: flex-end; margin-top: 1rem;">
+
+
+ <button class="btn btn-secondary" id="close-modal-benchmarks-btn">Close</button>
+
+
+ </div>
+
+
+ </div>
+
+
+ </div>
+
+
+
+
+
+ <!-- Toast Notification Container -->
+
+
+ 
+
+
+  <div class="toast-container" id="toast-container"></div>
+
+
+
+
+
+ <!-- Leaflet JS Library -->
+
+
+ <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+
+
+ 
+
+
+ <!-- Frontend Controller Script -->
+
+
+ <script src="./app.js?v=4.6.0"></script>
+
+
+</body>
+</html>
