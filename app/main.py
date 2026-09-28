@@ -61,25 +61,49 @@ app.add_middleware(
 class VercelPathRewriteMiddleware:
     """
     ASGI middleware ensuring Vercel serverless request rewrites
-    (/api/index.py) are restored to their intended API paths (/api/cases, /api/demo/seed, etc.)
-    using Vercel's edge proxy headers.
+    are restored to their intended API paths (/api/cases, /api/demo/seed, etc.)
+    regardless of whether Vercel routes them as /api/index.py, /cases, or /api/cases.
     """
     def __init__(self, app):
         self.app = app
 
     async def __call__(self, scope, receive, send):
         if scope["type"] == "http":
+            path = scope.get("path", "")
             headers = dict(scope.get("headers", []))
             forwarded = (
                 headers.get(b"x-forwarded-uri") or 
                 headers.get(b"x-matched-path") or 
                 headers.get(b"x-vercel-matched-path") or
-                headers.get(b"x-rewrite-url")
+                headers.get(b"x-rewrite-url") or
+                headers.get(b"x-original-uri")
             )
             if forwarded:
                 target_path = forwarded.decode("utf-8", errors="ignore").split("?")[0]
                 scope["path"] = target_path
                 scope["raw_path"] = target_path.encode("utf-8")
+                path = target_path
+
+            # If Vercel passed path with /api/index.py prefix
+            if path.startswith("/api/index.py"):
+                sub = path[len("/api/index.py"):]
+                if not sub or sub == "/":
+                    scope["path"] = "/"
+                elif not sub.startswith("/api"):
+                    scope["path"] = "/api" + sub
+                else:
+                    scope["path"] = sub
+                scope["raw_path"] = scope["path"].encode("utf-8")
+            # If Vercel stripped /api (e.g., /cases, /blockchain/verify, etc.)
+            elif not path.startswith("/api") and path not in [
+                "/", "/styles.css", "/app.js", "/favicon.ico",
+                "/docs", "/openapi.json", "/redoc",
+                "/download/codebase", "/download/zip", "/download/backend", "/download/backend-txt"
+            ]:
+                normalized = "/api" + (path if path.startswith("/") else "/" + path)
+                scope["path"] = normalized
+                scope["raw_path"] = normalized.encode("utf-8")
+
         await self.app(scope, receive, send)
 
 app.add_middleware(VercelPathRewriteMiddleware)
