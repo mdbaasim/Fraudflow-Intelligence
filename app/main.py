@@ -58,6 +58,32 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
+class VercelPathRewriteMiddleware:
+    """
+    ASGI middleware ensuring Vercel serverless request rewrites
+    (/api/index.py) are restored to their intended API paths (/api/cases, /api/demo/seed, etc.)
+    using Vercel's edge proxy headers.
+    """
+    def __init__(self, app):
+        self.app = app
+
+    async def __call__(self, scope, receive, send):
+        if scope["type"] == "http":
+            headers = dict(scope.get("headers", []))
+            forwarded = (
+                headers.get(b"x-forwarded-uri") or 
+                headers.get(b"x-matched-path") or 
+                headers.get(b"x-vercel-matched-path") or
+                headers.get(b"x-rewrite-url")
+            )
+            if forwarded:
+                target_path = forwarded.decode("utf-8", errors="ignore").split("?")[0]
+                scope["path"] = target_path
+                scope["raw_path"] = target_path.encode("utf-8")
+        await self.app(scope, receive, send)
+
+app.add_middleware(VercelPathRewriteMiddleware)
+
 @app.middleware("http")
 async def add_no_cache_headers(request, call_next):
     response = await call_next(request)
