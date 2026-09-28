@@ -1180,6 +1180,20 @@ except Exception as e:
 
 
 
+def find_static_file(name: str) -> Optional[Path]:
+    candidates = [
+        STATIC_DIR / name,
+        BASE_DIR / "public" / name,
+        BASE_DIR / name,
+        Path("app") / "static" / name,
+        Path("public") / name,
+        Path(name)
+    ]
+    for p in candidates:
+        if p.exists() and p.is_file():
+            return p
+    return None
+
 # Mount frontend static assets
 if STATIC_DIR.exists():
     app.mount("/static", StaticFiles(directory=str(STATIC_DIR)), name="static")
@@ -1189,8 +1203,8 @@ if STATIC_DIR.exists():
 @app.get("/api")
 @app.get("/api/")
 def serve_index():
-    index_file = STATIC_DIR / "index.html"
-    if index_file.exists():
+    index_file = find_static_file("index.html")
+    if index_file:
         return FileResponse(
             str(index_file),
             headers={
@@ -1199,27 +1213,33 @@ def serve_index():
                 "Expires": "0"
             }
         )
-    return JSONResponse({"message": "FraudFlow Intelligence API is running. Frontend assets under /static."})
+    return JSONResponse({"message": "FraudFlow Intelligence API is running."})
 
 @app.get("/styles.css")
 @app.get("/api/index.py/styles.css")
 @app.get("/api/styles.css")
 def serve_root_styles():
-    return FileResponse(
-        STATIC_DIR / "styles.css",
-        media_type="text/css",
-        headers={"Cache-Control": "no-cache, no-store, must-revalidate, max-age=0", "Pragma": "no-cache", "Expires": "0"}
-    )
+    style_file = find_static_file("styles.css")
+    if style_file:
+        return FileResponse(
+            str(style_file),
+            media_type="text/css",
+            headers={"Cache-Control": "no-cache, no-store, must-revalidate, max-age=0", "Pragma": "no-cache", "Expires": "0"}
+        )
+    return Response(content="", media_type="text/css")
 
 @app.get("/app.js")
 @app.get("/api/index.py/app.js")
 @app.get("/api/app.js")
 def serve_root_js():
-    return FileResponse(
-        STATIC_DIR / "app.js",
-        media_type="application/javascript",
-        headers={"Cache-Control": "no-cache, no-store, must-revalidate, max-age=0", "Pragma": "no-cache", "Expires": "0"}
-    )
+    js_file = find_static_file("app.js")
+    if js_file:
+        return FileResponse(
+            str(js_file),
+            media_type="application/javascript",
+            headers={"Cache-Control": "no-cache, no-store, must-revalidate, max-age=0", "Pragma": "no-cache", "Expires": "0"}
+        )
+    return Response(content="", media_type="application/javascript")
 
 @app.get("/favicon.ico", include_in_schema=False)
 def favicon():
