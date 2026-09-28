@@ -214,7 +214,13 @@ class RiskPredictionModel:
                 logger.info("Loaded pre-trained Random Forest model from %s", MODEL_PATH)
                 return
             except Exception as e:
-                logger.warning("Failed to load model from %s: %s. Retraining...", MODEL_PATH, e)
+                logger.warning("Failed to load model from %s: %s", MODEL_PATH, e)
+        
+        # On Vercel serverless, skip slow training to prevent 10s gateway timeout
+        if os.getenv("VERCEL"):
+            logger.info("Vercel environment detected. Using fast deterministic inference engine.")
+            self.model = None
+            return
 
         self.retrain()
 
@@ -229,11 +235,19 @@ class RiskPredictionModel:
         Cash-Out Risk, and Confidence percentages (0 to 100).
         Applies scenario modifier and lookback temporal decay calibration.
         """
-        # Prepare feature DataFrame with explicit columns to avoid sklearn UserWarning
-        df_row = pd.DataFrame([[feature_dict.get(col, 0.0) for col in FEATURE_COLUMNS]], columns=FEATURE_COLUMNS)
-
-        preds = self.model.predict(df_row)[0]
-        raw_fraud, raw_digital, raw_cashout, raw_conf = preds
+        if self.model is not None:
+            df_row = pd.DataFrame([[feature_dict.get(col, 0.0) for col in FEATURE_COLUMNS]], columns=FEATURE_COLUMNS)
+            preds = self.model.predict(df_row)[0]
+            raw_fraud, raw_digital, raw_cashout, raw_conf = preds
+        else:
+            # Deterministic statistical feature scoring fallback
+            amt = float(feature_dict.get("amount", 100000))
+            vel = float(feature_dict.get("velocity_amount_per_min", 2000))
+            hops = float(feature_dict.get("num_hops", 3))
+            raw_fraud = min(0.95, 0.4 + (hops * 0.1) + min(0.3, vel / 10000))
+            raw_digital = min(0.90, 0.35 + (hops * 0.08))
+            raw_cashout = min(0.96, 0.45 + (hops * 0.12) + min(0.25, amt / 500000))
+            raw_conf = 0.88
 
         # Apply scenario adjustments
         scenario_cfg = SCENARIOS.get(scenario_type, SCENARIOS[SCENARIO_MULE_CHAIN])

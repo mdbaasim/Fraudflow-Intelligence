@@ -2905,9 +2905,10 @@ Authorized Signature: [SEALED DIGITALLY]
  }
 
  // Golden Hour Emergency Freeze Blast Controls
- if (elements.btnEmergencyFreezeBlast) {
- elements.btnEmergencyFreezeBlast.addEventListener('click', triggerGoldenHourFreezeBlast);
- }
+   
+  if (elements.btnEmergencyFreezeBlast) {
+    elements.btnEmergencyFreezeBlast.addEventListener('click', triggerGoldenHourFreezeBlast);
+  }
  if (elements.btnQuickFreezeBlast) {
  elements.btnQuickFreezeBlast.addEventListener('click', triggerGoldenHourFreezeBlast);
  }
